@@ -1,0 +1,110 @@
+================================  M I D T E R M     P R O J E C T   ===================================
+(Medical Clinic) 
+
+TASK # 1: CMS to use, Initial Plans for the content.
+
+
+****[CMS TO USE]****
+	
+
+	<3 J o o m l a <3 eheh
+
+
+	* a powerful open-source content management used for building, organizing, managing and publishing content 
+	  for businesses, government, and oraganisations worldwide.
+	* Joomla is the combination of simple WordPress and comprehensive Drupal. 
+
+
+
+CORE FEATURES: (Text, videos , images para dun sa office na assigned satin)
+
+		* User Management
+			- Users are able to configure personal options for registration system. 
+			  There are various types of permission for all users who are allowed to access, edit, publish and administrate.
+			- example, for registered accounts, once logged in, they can't contribute to the content,
+			  but can access other areas like forum and download section 
+
+		* Media Manager
+			- manage media files or folders containing images, integrated to Article Editor tool so users can grab images and other files.
+
+		* Banner Management
+			-
+
+		* Contact Management
+			- An easy way of finding person with their contact information provided in this feature.
+
+		* Search Engine Optimisation
+			- users can navigate the site and search for relevant items.
+
+		* Routing System
+
+
+BENEFITS: 
+
+	> provide users ease-of-use na mga features. (charot...)
+	> free to use, forever naks.
+	> There are templates that provide users a GUI to edit the font, color, layouts, and features without modifying their code.
+
+PROS:
+
+	> Simpler installation than Drupal
+ 	> There is a community portal where users are provided with video courses where they can learn basic to advanced subjects.	>
+
+CONS:
+
+	> It is easier to install Quick.Cms or WordPress
+	> Still lacking of something for the advanced users to use when it comes to creating/managing the content of their website.
+	> Paid plugins
+	> 
+
+
+****[INITIAL PLANS for CONTENT]****
+
+(initial plans so (MAG-ASSUME NA LANG MUNA TAYO... </3 (sorry di pa kami nakapaginterview) )
+		
+
+		* Operating hours
+
+		* Kailangan rin ba na may account yung medical staff at mga pasyente? 
+			(kung sakali na mayron, once logged in na yung pasyente/medical staff, 
+			 makikita nila kung sino sino yung available na doctor/nusrse na pwedeng magaassist sa kanila, 
+	  		 likewise sa nakalog in na medical staff makikita niya or manonotify siya na may pasyente na magpapaschedule for consultation; 
+			 nagrerequest ng medical certificate/health record.)
+
+		* Available Medicines (SEARCH ENGINE(feature), or provide list of available medicines)
+				      (Medication: dosage for the patient)
+
+		* Doctor/Nurse's available time (pwede natin gamitin yung Contact Management feature dito, tapos yung search engine na feature)
+						(Usually kasi, assistant yung madalas na nasa office, kung sakali na walang doctor alteast may idea yung pasyente kung kailan silababalik sa clinic)
+
+		* Create Downloadable Forms or online registration for new patients...(User management features)
+
+		* Observatory and Treatment Area (pictures ng mga rooms, tapos yung mga nakaassign na doctor/nurses/medical staff)
+
+		* Health record of the patients (downloadable din sana, kung sakali na may paggagamitan sila for whatever purposes)
+
+		* Request for medical certificate, or, Excuse Letter verification. 
+
+		* Statistics (% of the registered patients na nagpaconsult dito ay diagnosed na may (anong klaseng sakit xD))
+
+		* Polls and Surveys (optional)
+
+		* Revised Penal Code (text content lang, walang feature)
+
+		* Physical Examination Guidelines (text content, wala ring feature na gagamitin...) 
+		 
+
+
+
+
+
+
+ONLINE RESOURCES:
+
+https://www.capterra.com/content-management-software/
+https://www.joomla.org/core-features.html
+https://docs.joomla.org/Joomla_Core_Features
+http://searchcontentmanagement.techtarget.com/definition/content-management-system-CMS
+https://docs.joomla.org/J3.x:New_Routing_System
+https://community.joomla.org/joomla-training.html
+https://www.appsruntheworld.com/top-10-content-management-software-vendors-and-market-forecast/
