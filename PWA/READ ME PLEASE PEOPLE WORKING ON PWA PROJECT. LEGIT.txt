@@ -1,0 +1,14 @@
+Tasks assignments
+HTML - Michael Ampaguey
+CSS - Louel Mattew Lagasca and Nicole Mariñas
+JS - Zari Uyenco and Kyla Kate Alunday
+
+/**
+The people working on the CMS will be, and should be focused on their 
+task but will have the right to commentate, suggest and improve our
+work in the PWA, and vice-versa. Since PWA is tasked to us, which has
+to work on both offline and online mode, we have to realize that we
+the harder part of the project. Communicate with your subgroup mates
+with regards to your assigned tasks. Also, if possible, each of us
+should have at least a minimum of 3 commits in the repository.
+*/
