@@ -1,0 +1,56 @@
+a{
+    text-decoration: none;
+}
+
+body{
+    margin: 0px;
+}
+
+body header{
+    width:100%;
+    height: 50vh;
+    background-color: #9fe2cc;
+    background-image: url(images/Kitchenware-Background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200vh auto;
+    padding: 25vh 0vh 0vh 0vh;
+}
+
+body header img{
+    display: block;
+    margin: auto;
+    width: 45vh;
+    height: auto;
+}
+
+body header div{
+    display:block;
+    margin: auto;
+    width: 45vh;
+    height: 3vh;
+    background-color: #FFFFFF;
+}
+
+body header a{
+    display:inline-block;
+    padding: 0vh 0vh 0vh 2vh;
+    font-size: 3vh;
+    font-family: basic;
+    font-weight: bold;
+    color: #000000;
+}
+
+body footer{
+    width: 100%;
+    height: auto;
+}
+
+@font-face{
+    font-family: aktiv;
+    src: url(fonts/aktiv.ttf);
+    
+    
+    font-family: basic;
+    src: url(fonts/basic.ttf);
+}
