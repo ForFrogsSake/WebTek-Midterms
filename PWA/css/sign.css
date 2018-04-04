@@ -10,7 +10,7 @@ body header{
     width:100%;
     height: 37vh;
     background-color: #9fe2cc;
-    background-image: url(images/Kitchenware-Background.png);
+    background-image: url(../images/Kitchenware-Background.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 205vh auto;
@@ -67,9 +67,9 @@ body footer{
 
 @font-face{
     font-family: aktiv;
-    src: url(fonts/aktiv.ttf);
+    src: url(../fonts/aktiv.ttf);
     
     
     font-family: basic;
-    src: url(fonts/basic.ttf);
+    src: url(../fonts/basic.ttf);
 }
