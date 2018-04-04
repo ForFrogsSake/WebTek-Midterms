@@ -20,6 +20,7 @@ body header{
 body header img{
     display: block;
     margin: auto;
+    padding: 0vh 0vh 0vh 3.2vh;
     width: 45vh;
     height: auto;
 }
@@ -27,19 +28,36 @@ body header img{
 body header div{
     display:block;
     margin: auto;
-    width: 45vh;
-    height: 3vh;
+    padding: 0.8vh 0.4vh 0.4vh 0.4vh;
+    width: 38vh;
+    height: 2.4vh;
     color: #9fb5e2; 
-    background-color: #FFFFFF;
+    background-color: #ffffff;
+    transition: 0.2s;
+    border-radius: 2vh;
+}
+
+body header div:hover{
+    background-color: #303030;
+}
+
+body header div:hover .option{
+    color: #ffffff;
 }
 
 body header a{
-    display:inline-block;
-    padding: 0vh 0vh 0vh 2vh;
-    font-size: 3vh;
+    display:block;
+    margin: 0vh 0vh 0vh 4.9vh;
+    font-size: 2.5vh;
     font-family: basic;
     font-weight: bold;
     color: #000000;
+    float: left;
+    transition: 0.2s;
+}
+
+body header div .option:hover{
+    color: #e4ea68;
 }
 
 body footer{
