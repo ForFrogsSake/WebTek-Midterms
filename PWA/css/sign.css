@@ -8,20 +8,20 @@ body{
 
 body header{
     width:100%;
-    height: 37vh;
+    height: 34.5vh;
     background-color: #9fe2cc;
     background-image: url(../images/Kitchenware-Background.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 205vh auto;
-    padding: 8.5vh 0vh 0vh 0vh;
+    padding: 10.5vh 0vh 0vh 0vh;
 }
 
 body header img{
     display: block;
     margin: auto;
     padding: 0vh 0vh 0vh 2.8vh;
-    width: 40vh;
+    width: 35vh;
     height: auto;
 }
 
@@ -29,8 +29,8 @@ body header div{
     display:block;
     margin: auto;
     padding: 0.8vh 0.4vh 0.4vh 0.4vh;
-    width: 34vh;
-    height: 2.4vh;
+    width: 30vh;
+    height: 2vh;
     color: #9fb5e2; 
     background-color: #ffffff;
     transition: 0.2s;
@@ -47,8 +47,8 @@ body header div:hover .option{
 
 body header a{
     display:block;
-    margin: 0vh 0vh 0vh 3.9vh;
-    font-size: 2.5vh;
+    margin: 0vh 0vh 0vh 3.68vh;
+    font-size: 2.1vh;
     font-family: basic;
     font-weight: bold;
     color: #000000;
