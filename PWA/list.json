@@ -74,4 +74,25 @@
 		"Address:" "Igorot Park",
 		"Desc:" "Cosy, Casual and Good for kids"
 	}
+	"16" {
+		"Name:" "Lemon and Olives Greek Taverna",
+		"Address:" "#26 Outlook Drive, Baguio City",
+		"Desc:" "Authentic Greek restaurant, Cosy and Romantic dates"
+	}
+	"17" {
+		"Name:" "Foggy Mountain Cookhouse",
+		"Address:" "172 St Joseph Street, San Carlos Heights, Baguio City",
+		"Desc:" "Mediterranean-inspired dishes, Families and Couples who love the sunset"
+	}
+	"18" {
+		"Name:" "Cafe Will",
+		"Address:" "11 M.H. Del Pilar St, Brgy. Burnham – Legarda, Baguio",
+		"Desc:" "Asian, American, and Italian dishes and Good Ambience"
+	}
+	"19" {
+		"Name:" "Arca’s Yard",
+		"Address:" "777 Tiptop, Ambuklao Road, Baguio City",
+		"Desc:" "Bed and Breakfast and Cozy Library Cafe"
+	}
+	
 }
