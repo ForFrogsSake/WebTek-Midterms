@@ -23,24 +23,6 @@
             <form>
                 <fieldset id="personalinfo">
                     <legend> Personal Information: </legend>
-                    First Name <br>
-                    <input type="text" name="firstname">
-                    <br>
-                    Middle Name <br>
-                    <input type="text" name="middlename">
-                    <br>
-                    Last Name <br>
-                    <input type="text" name="lastname">
-                    <br>
-                    Birthdate <br>
-                    <input type="date" name="bday" min="1998-12-31" max="1960-01-02">
-                    <br><br>
-                    <input type="radio" name="gender" value="male"> Male <br>
-                    <input type="radio" name="gender" value="female"> Female <br>
-                    <input type="radio" name="gender" value="LGBTQA"> LGBTQA <br>
-                </fieldset>
-                <fieldset>
-                    <legend> Account Details </legend>
                     User Name <br>
                     <input type="text" name="username">
                     <br>
@@ -52,6 +34,14 @@
                     <br>
                     Zip Code <br>
                     <input type="number" name="zip">
+                    <br>
+                    Birthdate <br>
+                    <input type="date" name="bday" min="1998-12-31" max="1960-01-02">
+                    <br><br>
+                    Gender <br>
+                    <input type="radio" name="gender" value="male"> Male <br>
+                    <input type="radio" name="gender" value="female"> Female <br>
+                    <input type="radio" name="gender" value="LGBTQA"> Others <br>
                 </fieldset>
 
                 <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
