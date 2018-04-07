@@ -1,0 +1,77 @@
+{
+	"1" {
+		"Name:" "High Point Restaurant",
+		"Address:" "Kennon Road Camp 7",
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"2" {
+		"Name:" "Chef's Home",
+		"Address:" "No. 88 Unit C, Old Sicat Hotel",
+		"Desc:" "Cosy, Casual and Groups"
+	},
+	"3" {
+		"Name:" "Chaya",
+		"Address:" "72 Legarda Road",
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"4" {
+		"Name:" "Cafe By The Ruins Dua",
+		"Address:" "255 Upper Session Road",
+		"Desc:" "Breakfast, Cosy and Casual"
+	},
+	"5" {
+		"Name:" "Forest House",
+		"Address:" "16 Loakan Road",
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"6" {
+		"Name:" "O' Mai Khan",
+		"Address:" "Session Road",
+		"Desc:" "All you can eat, Cosy and Casual"
+	},
+	"7" {
+		"Name:" "Hill Station",
+		"Address:" "Casa Vallejo, Upper Session Road", 
+		"Desc:" "Breakfast, Great cocktails and Cosy"
+	},
+	"8" {
+		"Name:" "Wood Nymph Korean Restaurant",
+		"Address:" "Luneta Hill Drive",
+		"Desc:" "Casual, Good for kids and Groups"
+	},
+	"9" {
+		"Name:" "Oh My Gulay",
+		"Address:" "108, Session Road",	
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"10" {
+		"Name:" "GRUMPY JOE",
+		"Address:" "Leonard Wood Road",
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"11" {
+		"Name:" "50s Diner",
+		"Address:" "105 Session Road",
+		"Desc:" "Casual, Good for kids and Groups" 
+	},
+	"12" {
+ 		"Name:" "Korean Palace Restaurant",
+		"Address:" "38 South Drive",
+		"Desc:" "All you can eat, Cosy and Casual"
+	},
+	"13" {
+		"Name:" "Good Taste Cafe & Restaurant",
+		"Address:" "Rajah Matanda Streett",
+		"Desc:" " Late-night food, Casual and Vegetarian options"
+	},
+	"14" {
+		"Name:" "Amare La Cucina",
+		"Address:" "#1 Villamor Drive, Barangay Lualhati",
+		"Desc:" "Cosy, Casual and Good for kids"
+	},
+	"15" {
+		"Name:" "Chocolate de Batirol",
+		"Address:" "Igorot Park",
+		"Desc:" "Cosy, Casual and Good for kids"
+	}
+}
