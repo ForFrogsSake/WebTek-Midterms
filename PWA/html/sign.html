@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/sign.css">
         <link rel="icon" href="../images/Baguio-Eats.png">
+        <script type="text/javascript" src="script.js"></script>
         <title>Baguio Eats</title>
     </head>
     
@@ -20,20 +21,17 @@
 
         <div id="signIn"> 
             <h1> Sign Up! </h1>
-            <form>
+            <form name="signUpForm">
                 <fieldset id="personalinfo">
                     <legend> Personal Information: </legend>
                     User Name <br>
                     <input type="text" name="username">
                     <br>
                     Email <br>
-                    <input type="email" name="Email">
+                    <input type="email" name="email">
                     <br>
                     Password <br>
                     <input type="password" name="passwd">
-                    <br>
-                    Zip Code <br>
-                    <input type="number" name="zip">
                     <br>
                     Birthdate <br>
                     <input type="date" name="bday" min="1998-12-31" max="1960-01-02">
@@ -44,12 +42,13 @@
                     <input type="radio" name="gender" value="LGBTQA"> Others <br>
                 </fieldset>
 
-                <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
+                <button type="button" onclick ="signUp()"> Submit!</button>
                 
-                <br><br><br>
+            </form>
 
-                <p> Already have an account? Sign In!</p>
-                <br><br>
+                 <p> Already have an account? Sign In!</p>
+
+            <form id="signInForm">
                 <h1> Sign In! </h1>
                 <fieldset>
                         <legend> Sign In! </legend>
@@ -61,9 +60,7 @@
                         <br><br>
                         <button type="button" onclick="alert('Welcome back foodie!')"> Sign In </button>
                 </fieldset>
-            </form>
-            
-
+            </form>            
         </div>
         
         <footer>
