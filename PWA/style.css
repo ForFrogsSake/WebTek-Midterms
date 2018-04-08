@@ -1,9 +1,35 @@
+@font-face{
+    font-family: aktiv;
+    src: url(fonts/aktiv.ttf);
+}
+
+@font-face{
+    font-family: bebas;
+    src: url(fonts/bebas.ttf);
+}
+
+@font-face{
+    font-family: basic;
+    src: url(fonts/basic.ttf);
+}
+
 a{
     text-decoration: none;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input{
+    box-sizing:border-box
+}
+
 body{
     margin: 0px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
 }
 
 body header{
@@ -15,6 +41,7 @@ body header{
     background-repeat: no-repeat;
     background-size: 205vh auto;
     padding: 9.5vh 0vh 0vh 0vh;
+    grid-area: 1 / 1 / span 1 / span 1;
 }
 
 body header img{
@@ -60,16 +87,117 @@ body header div .option:hover{
     color: #e4ea68;
 }
 
-body footer{
-    width: 100%;
-    height: auto;
+#search{
+    display: block;
+    margin: auto;
+    width: 70%;
+    padding: 4vh 2vh 2vh 2vh;
+    background-color: transparent;
+    box-sizing:border-box
 }
 
-@font-face{
+#search input[type=text]{
+    display: block;
+    width:100%;
+    height:5vh;
+    border-radius: 0vh;
+    border: none;
+    padding: 1.4vh 3vh 1.2vh 3vh;
+    font-family: helvetica;
+    font-size: 2.5vh;
+    color: #303030;
+    transition: 0.5s;
+    margin:0vh;
+    box-sizing:border-box
+}
+
+#search input[type=text]:focus{
+    border-radius: 5vh;
+    box-shadow: 0vh 0.2vh 2vh #707070;
+}
+
+#mapArea{
+    background-color: red;
+    background-image: url(images/Map.png);
+    background-position: center;
+    background-size: 100% auto;
+    width: 100%;
+    height: 56vh;
+    margin: auto;
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+#reviews{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    grid-area: 1 / 2 / span 2 / span 1;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#title{
+    margin: auto;
+    width: 100%;
+    height: 30vh;
+    background-image: url(images/Title.png);
+    background-position: center;
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    grid-area: 1 / 2 / span 1 / span 1;
+}
+
+#title h1{
     font-family: aktiv;
-    src: url(fonts/aktiv.ttf);
+    font-size: 5vh;
+    color: #303030;
+}
+
+#average{
+    margin: auto;
+    width: 100%;
+    height: 30vh;
+    background-image: url(images/average.png);
+    background-position: center;
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+#content{
+    margin: auto;
+    width: 100%;
+    height: 60vh;
+    background-image: url(images/Reviews.png);
+    background-position: contain;
+    background-size: 50% auto;
+    grid-area: 2 / 1 / span 1 / span 2;
+}
+
+@media screen and (max-width: 600px){
+    body{
+        display: block;
+    }
+
+    #search{
+        padding: 2vh;
+        width: 100%;
+        background-color: #ffe655;
+    }
     
     
-    font-family: basic;
-    src: url(fonts/basic.ttf);
+    #average{
+        background-position: center;
+        background-size: 80% auto;
+    }
+    
+    #content{
+        width: 100%;
+        background-size: 100% auto;
+    }
+    
+    #reviews{
+        width:100%;
+        display: block;
+    }
 }
