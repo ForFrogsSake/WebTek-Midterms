@@ -1,3 +1,14 @@
+@font-face{
+    font-family: aktiv;
+    src: url(../fonts/aktiv.ttf);
+    
+    font-family: bebas;
+    src: url(../fonts/bebas.ttf);
+    
+    font-family: basic;
+    src: url(../fonts/basic.ttf);
+}
+
 a{
     text-decoration: none;
 }
@@ -63,13 +74,4 @@ body header div .option:hover{
 body footer{
     width: 100%;
     height: auto;
-}
-
-@font-face{
-    font-family: aktiv;
-    src: url(../fonts/aktiv.ttf);
-    
-    
-    font-family: basic;
-    src: url(../fonts/basic.ttf);
 }
