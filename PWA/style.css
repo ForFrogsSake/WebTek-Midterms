@@ -65,6 +65,10 @@ body footer{
     height: auto;
 }
 
+#map{
+    height: 80%;
+}
+
 @font-face{
     font-family: aktiv;
     src: url(fonts/aktiv.ttf);
