@@ -147,12 +147,6 @@ body header div .option:hover{
     grid-area: 1 / 2 / span 1 / span 1;
 }
 
-#title h1{
-    font-family: aktiv;
-    font-size: 5vh;
-    color: #303030;
-}
-
 #average{
     margin: auto;
     width: 100%;
