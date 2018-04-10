@@ -118,7 +118,6 @@
             <h1> Sign Up! </h1>
             <form name="signUpForm">
                 <fieldset id="personalinfo">
-                    <legend> Personal Information: </legend>
                     User Name <br>
                     <input type="text" name="username" placeholder="Pick a Username">
                     <br>
@@ -128,36 +127,19 @@
                     Password <br>
                     <input type="password" name="passwd" placeholder="Create a password">
                     <br>
-<<<<<<< HEAD
                     Zip Code <br>
                     <input type="number" name="zip">
-                    <br><br>
-                <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
-                
-                <br><br><br>
+                    <br>
                     Birthdate <br>
                     <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
-                    <br>
+                    <br><br><br>
+                    <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
                 </fieldset>
                 <br><br>
-                <p> Already have an account? Sign In!</p>
+                <p> Already have an account? <a href="#sign">Sign In!</a></p>
                 <br><br>
-=======
-                    Birthdate <br>
-                    <input type="date" name="bday" min="1998-12-31" max="1960-01-02">
-                </fieldset>
-
-                <a href="../index.html"><button type="button" onclick="signUp()"> Submit!</button></a>
-                
-            </form>
-
-                 <p> Already have an account? Sign In!</p>
-
-            <form id="signInForm">
->>>>>>> be124431aa09e0f01d2c033586cce9ae22df8f66
-                <h1> Sign In! </h1>
+                <h1 id="sign"> Sign In! </h1>
                 <fieldset>
-                        <legend> Sign In! </legend>
                         Email <br>
                         <input type="email" name="email">
                         <br>
