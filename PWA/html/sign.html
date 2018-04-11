@@ -115,39 +115,42 @@
         </header>
 
         <div id="signIn"> 
-            <h1> Sign Up! </h1>
             <form name="signUpForm">
-                <fieldset id="personalinfo">
-                    User Name <br>
-                    <input type="text" name="username" placeholder="Pick a Username">
-                    <br>
-                    Email <br>
-                    <input type="email" name="email" placeholder="you@example.com">
-                    <br>
-                    Password <br>
-                    <input type="password" name="passwd" placeholder="Create a password">
-                    <br>
-                    Zip Code <br>
-                    <input type="number" name="zip">
-                    <br>
-                    Birthdate <br>
-                    <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
-                    <br><br><br>
-                    <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
-                </fieldset>
-                <br><br>
-                <p> Already have an account? <a href="#sign">Sign In!</a></p>
-                <br><br>
                 <h1 id="sign"> Sign In! </h1>
                 <fieldset>
+                    <br><br><br>
                         Email <br>
                         <input type="email" name="email">
-                        <br>
+                        <br><br>
                         Password <br>
                         <input type="password" name="passwd">
                         <br><br>
                         <a href="../index.html"><button type="button" onclick="signIn()"> Sign In </button></a>
                 </fieldset>
+                <br><br><br><br>
+                <div class="separator">
+                        <span class="separator-or">OR</span>
+                    </div>
+                    <br><br>
+                    <h1> Sign Up! </h1>
+                <fieldset id="personalinfo">
+                        User Name <br>
+                        <input type="text" name="username" placeholder="Pick a Username">
+                        <br>
+                        Email <br>
+                        <input type="email" name="email" placeholder="you@example.com">
+                        <br>
+                        Password <br>
+                        <input type="password" name="passwd" placeholder="Create a password">
+                        <br>
+                        Zip Code <br>
+                        <input type="number" name="zip">
+                        <br>
+                        Birthdate <br>
+                        <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
+                        <br><br><br>
+                        <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
+                    </fieldset>
             </form>            
         </div>
         
