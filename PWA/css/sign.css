@@ -76,23 +76,24 @@ body footer {
     height: auto;
 }
 
-body div h1 {
+body div form h1 {
+    font-family: basic;
     text-align: center;
-
 }
+
 body div form fieldset {
     height: 46vh;
     width: 50vh;
     margin: auto;
-    border-radius: 5vh;
+    border: none;
     text-align: center;
     font-size: 3vh;
-    border-style: solid 2vh black;
     
 }
 
 body div form fieldset input {
     font-size: 2vh;
+    font-family: aktiv;
 }
 
 body div form fieldset button {
@@ -109,15 +110,10 @@ body div form fieldset button {
 .separator-or {
     position: absolute;
     top: -2vh;
-    left: 98vh;
+    left: 50%;
     margin-left: -5vh;
     padding: 0vh 2vh;
     background: #ffffff;
     color: black;
-    font-size: 3vh;
-}
-
-body div form p {
-    text-align: center;
     font-size: 3vh;
 }
