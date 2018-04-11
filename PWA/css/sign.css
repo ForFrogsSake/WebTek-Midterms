@@ -71,7 +71,53 @@ body header div .option:hover{
     color: #e4ea68;
 }
 
-body footer{
+body footer {
     width: 100%;
     height: auto;
+}
+
+body div h1 {
+    text-align: center;
+
+}
+body div form fieldset {
+    height: 46vh;
+    width: 50vh;
+    margin: auto;
+    border-radius: 5vh;
+    text-align: center;
+    font-size: 3vh;
+    border-style: solid 2vh black;
+    
+}
+
+body div form fieldset input {
+    font-size: 2vh;
+}
+
+body div form fieldset button {
+    font-size: 3vh;
+
+}
+
+.separator {
+    margin: 5vh 10vh;
+    border-top: 0.5vh solid #cccccc;
+    position: relative;
+}
+
+.separator-or {
+    position: absolute;
+    top: -2vh;
+    left: 98vh;
+    margin-left: -5vh;
+    padding: 0vh 2vh;
+    background: #ffffff;
+    color: black;
+    font-size: 3vh;
+}
+
+body div form p {
+    text-align: center;
+    font-size: 3vh;
 }

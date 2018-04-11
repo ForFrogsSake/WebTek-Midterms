@@ -127,13 +127,6 @@ body header div .option:hover{
     grid-area: 2 / 1 / span 1 / span 1;
 }
 
-<<<<<<< HEAD
-#map{
-    height: 80%;
-}
-
-@font-face{
-=======
 #reviews{
     width: 90%;
     height: 100%;
@@ -152,13 +145,6 @@ body header div .option:hover{
     background-size: 80% auto;
     background-repeat: no-repeat;
     grid-area: 1 / 2 / span 1 / span 1;
-}
-
-#title h1{
->>>>>>> 0d460bcb347585f80c496e43202283489a1a60da
-    font-family: aktiv;
-    font-size: 5vh;
-    color: #303030;
 }
 
 #average{
