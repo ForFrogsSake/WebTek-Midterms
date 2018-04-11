@@ -1,5 +1,6 @@
 
 
+/*
 function signUp(){
                 validate();
                 var username = document.forms['signUpForm']['username'].value;
@@ -42,7 +43,7 @@ function signUp(){
                 var usersObject = ;
 
             */
-
+            /*
             function validate(){
                 var email = document.forms['signUpForm']['email'].value;
                 var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
@@ -72,41 +73,61 @@ function signUp(){
                 //console.log(passwd);
             }
 
-            /*
-            var idbSupported = false;
-            var db;
+			*/
+
+var db;
+
+
+var idbSupported = false; 
+//created a global variable called idbSupported and 
+	//used it as a flag to check if the browser can use IndexedDB          
+document.addEventListener("DOMContentLoaded", function(){
+	if("indexedDB" in window) {
+   		idbSupported = true;
+    }
+//Check if IndexedDB is supported in window.
+//Used a DOMContentLoaded event to wait for the page to load. 
              
-            document.addEventListener("DOMContentLoaded", function(){
+    if(idbSupported) {
+        var request = indexedDB.open("usersdb",1);
+        //the '1' in the open method is the version of the db which determines the database schema
+        //the result for the open function is an instance of an IDBDatabase 
+           
+    	request.onsuccess = function(e) {
+            console.log("Success!");
+                db = e.target.result;
+        }
+
+        //success event triggers the onsuccess() function whose type property is set to "success"
              
-                if("indexedDB" in window) {
-                    idbSupported = true;
-                }
+        request.onerror = function(e) {
+            console.log("Error");
+            console.dir(e);
+        }
+
+        //event error triggers the onerror() function whose type property is set to "error" 
+
+        request.onupgradeneeded = function(e){
+        	console.log("Running upgrade");
+        	var thisDb = e.target.result;
+        }
+
+        //
              
-                if(idbSupported) {
-                    var openRequest = indexedDB.open("test_v2",1);
+    }
+
+    var userStore = db.createUserStore("name", {keyPath: "myName"});
+
+    const userData = [];
+
+    const dbName = "NAME";
+
+    var request = indexedDB.open("userdb", 2);
+
              
-                    openRequest.onupgradeneeded = function(e) {
-                        console.log("running onupgradeneeded");
-                        var thisDB = e.target.result;
-             
-                        if(!thisDB.objectStoreNames.contains("firstOS")) {
-                            thisDB.createObjectStore("firstOS");
-                        }
-             
-                    }
-             
-                    openRequest.onsuccess = function(e) {
-                        console.log("Success!");
-                        db = e.target.result;
-                    }
-             
-                    openRequest.onerror = function(e) {
-                        console.log("Error");
-                        console.dir(e);
-                    }
-             
-                }
-             
-            },false);
-            */
-            
+},false);
+
+
+
+           
+	            
