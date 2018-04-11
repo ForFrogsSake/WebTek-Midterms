@@ -81,6 +81,10 @@ body div form h1 {
     text-align: center;
 }
 
+body div form {
+    padding: 10vh;
+}
+
 body div form fieldset {
     height: 46vh;
     width: 50vh;
