@@ -5,102 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/sign.css">
         <link rel="icon" href="../images/Baguio-Eats.png">
-        <script  async type="text/javascript">
-            
-            function signUp(){
-                var username = document.forms['signUpForm']['username'].value;
-                var email = document.forms['signUpForm']['email'].value;
-                var passwd = document.forms['signUpForm']['passwd'].value;
-                var birth = document.forms['signUpForm']['bday'].value;
-
-                var user = {
-                    'username':username,
-                    'email':email,
-                    'passwd':passwd,
-                    'birth':birth,
-                }
-
-                let userArray = [];
-
-                //localStorage.setItem('users', userArray);
-                const array = JSON.parse(localStorage.getItem('users'));
-                userArray = [array];
-                userArray.push(users)
-
-                
-                localStorage.setItem('users', JSON.stringify(userArray));
-                console.log(JSON.stringify(userArray));
-                console.log(array);
-            }
-
-            function validate(){
-                var email = document.forms['signUpForm']['email'].value;
-                var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
-
-                if (!emailFilter.test(email)) {
-                    alert('Please enter a valid e-mail address.');
-                    return false;
-                }
-
-                return true;
-
-            }
-            
-            /*
-            function signIn(){
-                var email = document.forms['signInForm']['email'].value;
-                var passwd = document.forms['signInForm']['passwd'].value;
-
-                var users = {
-                    'email':email,
-                    'passwd':passwd,
-
-                }
-
-                localStorage.setItem('users', JSON.stringify(users));
-                //console.log(email);
-                //console.log(passwd);
-            }
-
-            /*
-            var idbSupported = false;
-            var db;
-             
-            document.addEventListener("DOMContentLoaded", function(){
-             
-                if("indexedDB" in window) {
-                    idbSupported = true;
-                }
-             
-                if(idbSupported) {
-                    var openRequest = indexedDB.open("test_v2",1);
-             
-                    openRequest.onupgradeneeded = function(e) {
-                        console.log("running onupgradeneeded");
-                        var thisDB = e.target.result;
-             
-                        if(!thisDB.objectStoreNames.contains("firstOS")) {
-                            thisDB.createObjectStore("firstOS");
-                        }
-             
-                    }
-             
-                    openRequest.onsuccess = function(e) {
-                        console.log("Success!");
-                        db = e.target.result;
-                    }
-             
-                    openRequest.onerror = function(e) {
-                        console.log("Error");
-                        console.dir(e);
-                    }
-             
-                }
-             
-            },false);
-            */
-            
-        </script>
+        <script  async type="text/javascript" src="../script.js"></script>
         <title>Baguio Eats</title>
     </head>
     
@@ -128,21 +33,6 @@
                     Password <br>
                     <input type="password" name="passwd" placeholder="Create a password">
                     <br>
-<<<<<<< HEAD
-                    Zip Code <br>
-                    <input type="number" name="zip">
-                    <br><br>
-                <button type="button" onclick="alert('Congrats! You now have a Baguio Eats account!')"> Submit!</button>
-                
-                <br><br><br>
-                    Birthdate <br>
-                    <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
-                    <br>
-                </fieldset>
-                <br><br>
-                <p> Already have an account? Sign In!</p>
-                <br><br>
-=======
                     Birthdate <br>
                     <input type="date" name="bday" min="1998-12-31" max="1960-01-02">
                 </fieldset>
@@ -154,7 +44,6 @@
                  <p> Already have an account? Sign In!</p>
 
             <form id="signInForm">
->>>>>>> 0d460bcb347585f80c496e43202283489a1a60da
                 <h1> Sign In! </h1>
                 <fieldset>
                         <legend> Sign In! </legend>
