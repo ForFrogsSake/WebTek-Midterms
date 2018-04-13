@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link rel="stylesheet" type="text/css" href="../css/sign.css">
+	    <link rel="icon" href="../images/Baguio-Eats.png">
+	    <script  async type="text/javascript" src="../script.js"></script>
+	    <title>Baguio Eats</title>
+	</head>
+
+	<body onload="openDB()">
+		<header>
+            <img src="../images/Baguio-Eats-Logo.png">
+            <div>
+                <a href="../index.html" class="option">Home</a>
+                <a href="../index.html#about" class="option">About</a>
+                <a href="sign.html" class="option">Sign In</a>
+            </div>
+        </header>
+
+        <div>
+	        <form name="signUpForm">
+	            <h1> Sign Up </h1>
+	        	<fieldset id="personalinfo">
+	                UserName <br>
+	                <input type="text" name="username" placeholder="Pick a Username">
+	                <br>
+	                Email <br>
+	                <input type="email" name="email" placeholder="you@example.com">
+	                <br>
+	                Password <br>
+	                <input type="password" name="passwd" placeholder="Create a password">
+	                <br>
+	                Birthdate <br>
+	                <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
+	                <br><br><br>
+	                 <!-- <a href="../index.html"> </a>-->
+	                <button type="button" onclick="signUp()"> Submit!</button>
+	            </fieldset>
+	        </form>
+        </div> 
+
+        <footer>
+        	
+        </footer>           
+	</body>
+</html>
