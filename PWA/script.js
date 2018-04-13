@@ -87,8 +87,8 @@ function signUp(){
 
 	transaction.onerror = function(e){
 		document.getElementById("duplicate").innerHTML = "Username already taken";
-		validate();
 		disableSubmit();
+		validate();
 		//lengthPass();
 	}
 
@@ -109,7 +109,7 @@ function signUp(){
 
 	request.onsuccess = function(e){
 		console.log(e);
-		console.log('added new user' + newUser.username);
+		console.log('added new user' + " " + newUser.username);
 		//window.location = "signin.html";
 	}
 
@@ -169,12 +169,19 @@ function validate(){
 
 function disableSubmit(){
 	var x = document.getElementById("button").disable;	
-	document.getElementById("button").value = x;
+	document.getElementById("button").innerHTML = x;
 }
 
 /*
 function lengthPass(){
-	var passwd = document.forms["signUpForm"]["passwd"].value;
+	var passwd = document.forms['signUpForm']['passwd'].value;
+	var passwdLength = passwd.value.length;
+
+
+	if(passwd.value == '' || passwdLength<8){
+		console log('password too short')
+	}
+
 
 	if(passwd.value.length = 8){
 		console.log('good pass');
