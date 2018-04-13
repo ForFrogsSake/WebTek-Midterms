@@ -20,10 +20,10 @@
         </header>
 
         <div> 
-            <form name="signUpForm">
+            <form>
                 <h1 id="sign"> Sign In </h1>
                 <fieldset>
-                        Email <br>
+                        Username <br>
                         <input type="email" name="email">
                         <br><br>
                         Password <br>
@@ -35,6 +35,9 @@
                         <span class="separator-or">OR</span>
                 </div>
                 <br><br>
+
+            </form>
+            <form name="signUpForm">
                     <h1> Sign Up </h1>
                 <fieldset id="personalinfo">
                         User Name <br>
@@ -49,7 +52,8 @@
                         Birthdate <br>
                         <input type="date" name="bday" min="1998-01-02" max="1960-01-02">
                         <br><br><br>
-                        <a href="../index.html"><button type="button" onclick="signUp()"> Submit!</button></a>
+                         <a href="../index.html">
+                        <button type="button" onclick="signUp()"> Submit!</button></a>
                     </fieldset>
             </form>            
         </div>

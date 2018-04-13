@@ -1,155 +1,116 @@
 
 
-/*
+// var thisDb;
+
+// var request = window.indexedDB.open("UserDatabase");
+
+// request.onsuccess = function(e) {
+//     console.log("Success!");
+//         thisDb = request.result;
+// };
+ 
+ 
+// request.onupgradeneeded = function(e){
+// 	console.log(e.target);
+// 	thisDb = e.target.result;
+
+// 	var userStore = thisDb.createObjectStore("users", {keyPath: "username"});
+
+// 	//Define what data items the userStore will contain 
+// 	userStore.createIndex = ("name", "name", {unique: false}); //a name can be duplicated therefore we will not unique index 
+// 	userStore.createIndex = ("email", "email", {unique: true}); //every user should have a unique email 
+// 	userStore.createIndex = ("passwd", "passwd", {unique: false});
+// 	userStore.createIndex = ("bday", "bday", {unique: false});
+	
+// 	//newUser();
+
+// 	};
+
+// function newUser(){
+// 	var newUsers = [{name: "kyla", email: "kyla@email.com", passwd: "123", bday: 09/09/09}];
+// 	var userTransaction = thisDb.transaction("[users]", "readwrite");
+
+// 	userTransaction.oncomplete = function(e){
+// 		console.log('Transaction complete');
+// 		thisDb = userTransaction.result;
+// 	};
+
+// 	userTransaction.onerror = function(e){
+// 		console.log('Error');
+
+// 	};
+
+// 	var userDataStore = userTransaction.userStore("users");
+
+// 	var store = userStore.add(newUsers[0]);
+
+// 	store.onsuccess = function(e){
+// 		console.log('Success');
+// 	};
+// };
+
+openDB()
+function openDB(){
+	var request = indexedDB.open("BaguioEatsDB", 1);
+	request.onerror = function(e){
+		console.log('di nag open ung db');
+	}
+	request.onsuccess = function(e){
+		console.log('nagopen ung db');
+		db = e.target.result;
+		// signUp();
+	}
+	request.onupgradeneeded = function(e){
+		console.log('nagupdate');
+		db = e.target.result;
+		var objectStore = db.createObjectStore("users", {keyPath: "username"});
+		objectStore.createIndex("username", "username", {unique:true});
+		objectStore.createIndex("email", "email", {unique:true});
+
+		// objectStore.transaction.oncomplete = function(e){
+		// 	var userDataStore = db.transaction("users", "readwrite").objectStore("users");
+		// 	newData.forEach(function(user){
+		// 		userDataStore.add(user);
+		// 	})
+		// }
+	}
+
+}
+
 function signUp(){
-                validate();
-                var username = document.forms['signUpForm']['username'].value;
-                var email = document.forms['signUpForm']['email'].value;
-                var passwd = document.forms['signUpForm']['passwd'].value;
-                var birth = document.forms['signUpForm']['bday'].value;
+	console.log('asdasd');
+	var transaction = db.transaction(["users"], "readwrite");
 
-                var user = {
-                    'username':username,
-                    'email':email,
-                    'passwd':passwd,
-                    'birth':birth,
-                }
+	transaction.oncomplete = function(e){
+		console.log('complete transaction');
+	}
 
-                let userArray = [];
+	transaction.onerror = function(e){
+		console.log('error transaction, baka may duplicate');
+	}
 
-                //localStorage.setItem('users', userArray);
-                var array = JSON.parse(localStorage.getItem('users'));
-                userArray = [array];
-                userArray.push(users)
+	var username = document.forms['signUpForm']['username'].value;
+	var email = document.forms['signUpForm']['email'].value;
+	var passwd = document.forms['signUpForm']['passwd'].value;
+	var birth = document.forms['signUpForm']['bday'].value;
 
-                
-                localStorage.setItem('users', JSON.stringify(userArray));
-                console.log(JSON.stringify(userArray));
-                console.log(array);
-            }
+	var newUser = {
+		"username":username,
+		"password":passwd,
+		"email":email,
+		"birthdate":birth
+	}
 
-            /*
-                practice
+	var objectStore = transaction.objectStore("users");
+	var request = objectStore.add(newUser);
+	request.onsuccess = function(e){
+		console.log('added new user' + newUser.username);
+	}
+}
 
-                let users = [];
-
-                if (users){
-                    users = JSON.parse(localstorage/indexeddb.getItem('user'));
-                }
-                else{
-                    users = localStorage/indexeddb.setItem('user', JSON.stringify(users));
-                }
-
-                var usersObject = ;
-
-            */
-            /*
-            function validate(){
-                var email = document.forms['signUpForm']['email'].value;
-                var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
-
-                if (!emailFilter.test(email)) {
-                    alert('Please enter a valid e-mail address.');
-                    return false;
-                }
-
-                return true;
-
-            }
-            
-            /*
-            function signIn(){
-                var email = document.forms['signInForm']['email'].value;
-                var passwd = document.forms['signInForm']['passwd'].value;
-
-                var users = {
-                    'email':email,
-                    'passwd':passwd,
-
-                }
-
-                localStorage.setItem('users', JSON.stringify(users));
-                //console.log(email);
-                //console.log(passwd);
-            }
-
-			*/
-//constant called userData 
-const UsersDB = "users";
-
-var db;
-
-//created a global variable called idbSupported and 
-	//used it as a flag to check if the browser can use IndexedDB  
-var idbSupported = false;
-//Check if IndexedDB is supported in window.
-//Used a DOMContentLoaded event to wait for the page to load.        
-document.addEventListener("DOMContentLoaded", function(){
-	if("indexedDB" in window) {
-   		idbSupported = true;
-    }
-            
-    if(idbSupported) {
-    	//the '1' in the open method is the version of the db which determines the database schema
-        //the result for the open function is an instance of an IDBDatabase 
-        var request = indexedDB.open("UsersDB",1);
-        
-        //success event triggers the onsuccess() function whose type property is set to "success"     
-    	request.onsuccess = function(e) {
-            console.log("Success!");
-                db = e.target.result;
-        }
-		
-		//handle errors 
-        //event error triggers the onerror() function whose type property is set to "error"     
-        request.onerror = function(e) {
-            console.log("Error");
-            console.dir(e);
-        }
-       
-        //onupgradeneeded event is triggered when creating a new database or increasing the version number of an existing database. 
-        request.onupgradeneeded = function(e){
-        	console.log("Running upgrade");
-        	var thisDb = e.target.result;
-
-        	//Create a userStore to hold information about our users. 
-        	//username as a keyPath, guaranteed to be unique
-        	var userStore = thisDb.createUserStore("users", {keyPath: "username"});
-
-        	//create another user store called 'names'
-        		//autoincrement flag is set as true
-        	var usrStore = this.Db.createUserStore("names", {autoincrement: true});
-
-        	//Create an index to search users by name. There are moments where we could encounter same name
-        		//so we cannot use a unique index. 
-        	userStore.createIndex = ("name", "name", {unique: false});
-
-        	//Create an index to search users by email. Make sure that no users have the same email
-        		//Use the unique index 
-        	userStore.createIndex = ("email", "email", {unique: true});
-
-        	//Use the transaction.oncomplete to make sure the userStore creation is finished before adding data. 
-        		//oncomplete event handler of IDBTransaction interface handles the complete event,
-        			//it is fired when the transaction successfully completes.
-        	userStore.transaction.oncomplete = function(e){
-        		//Store values on the newly created userStore
-        			//readwrite mode means you can change the data in your database. 
-        		var userDataStore = thisDb.transaction("users", "readwrite").userStore("users");
-        		userData.forEach(function(user) {
-        			userDataStore.add(user);
-        		});
-         	} 
-
-      	}            
-    }            
-},false);
-
-
-
-
-
-
-
-
-           
-	            
+function signIn(){
+	console.log('ad');
+	var transaction = db.transaction(["users"]);
+	var objectStore = transaction.objectStore("users");
+	var request = objectStore.get("")
+}
