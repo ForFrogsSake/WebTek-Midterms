@@ -1,0 +1,41 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/sign.css">
+        <link rel="icon" href="../images/Baguio-Eats.png">
+        <script  async type="text/javascript" src="../script.js"></script>
+        <title>Baguio Eats</title>
+    </head>
+    
+    <body onload="openDB()">
+        <header>
+            <img src="../images/Baguio-Eats-Logo.png">
+            <div>
+                <a href="../index.html" class="option">Home</a>
+                <a href="../index.html#about" class="option">About</a>
+                <a href="sign.html" class="option">Sign In</a>
+            </div>
+        </header>
+
+        <div> 
+            <form name="signInForm">
+                <h1 id="sign"> Sign In </h1>
+                <fieldset>
+                        Username <br>
+                        <input type="text" name="username">
+                        <br><br>
+                        Password <br>
+                        <input type="password" name="passwd">
+                        <br><br>
+                        <!-- <a href="../index.html"></a> --><button type="button" onclick="signIn()"> Sign In </button></a> 
+                </fieldset>
+            </form>
+        </div>        
+
+        <footer>
+            
+        </footer>
+    </body>
+</html>

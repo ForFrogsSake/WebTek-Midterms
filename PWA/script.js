@@ -49,7 +49,7 @@
 // 	};
 // };
 
-openDB()
+
 function openDB(){
 	var request = indexedDB.open("BaguioEatsDB", 1);
 	request.onerror = function(e){
@@ -67,12 +67,12 @@ function openDB(){
 		objectStore.createIndex("username", "username", {unique:true});
 		objectStore.createIndex("email", "email", {unique:true});
 
-		// objectStore.transaction.oncomplete = function(e){
-		// 	var userDataStore = db.transaction("users", "readwrite").objectStore("users");
-		// 	newData.forEach(function(user){
-		// 		userDataStore.add(user);
-		// 	})
-		// }
+
+		var objectStore = db.createObjectStore("reviews", {keyPath: "username"});
+		objectStore.createIndex("username", "username", {unique:true});
+		objectStore.createIndex("restaurant", "restaurant", {unique:true});
+		objectStore.createIndex("rating", "rating", {unique:false});
+
 	}
 
 }
@@ -104,6 +104,7 @@ function signUp(){
 	var objectStore = transaction.objectStore("users");
 	var request = objectStore.add(newUser);
 	request.onsuccess = function(e){
+		console.log(e);
 		console.log('added new user' + newUser.username);
 	}
 }
@@ -112,5 +113,69 @@ function signIn(){
 	console.log('ad');
 	var transaction = db.transaction(["users"]);
 	var objectStore = transaction.objectStore("users");
-	var request = objectStore.get("")
+
+	var username = document.forms['signInForm']['username'].value;
+	var passwd = document.forms['signInForm']['passwd'].value;
+
+	var request = objectStore.get(username);
+
+	request.onsuccess = function(e){ //e = laman ng request 
+		//check if result nung request is undefined
+		//undefined meaning walang username na nahanap sa db
+		if(request.result == undefined){ 
+			console.log('User not found!');
+		}else{
+			console.log(request.result.username); //if di siya undefined print yung username
+			if (request.result.password == passwd){ //yung passwd ay correct
+				console.log('yay');
+				sessionStorage.setItem("user", JSON.stringify({"username": username, "password": passwd}));
+				//to check if the user is login 
+				//window.location = "../index.html"; //punta siya sa home
+			}else { //if hindi correct
+				console.log('wrong password');
+				//window.location = "sign.html"; //reload yung sign html
+			}
+		}
+	}
+
+	request.onerror = function(e){
+		console.log('failed objectStore');
+	}
 }
+
+function addReview(){
+	console.log('yo');
+
+	var transaction = db.transaction(["reviews"], "readwrite");
+
+	transaction.oncomplete = function(e){
+		console.log('haloo');
+	}
+
+	transaction.onerror = function(e){
+		console.log('error');
+	}
+
+	var restaurant = document.forms['addReview']['restaurant'].value;
+	var rating = document.forms['addReview']['']
+}
+
+
+
+
+
+/*
+document.querySelectorAll("input").addEventListener("change", function(){
+	//var change = document.getElementsByName("username");
+	//change.value = change.value.toUpperCase();
+
+	var username = document.forms["signUpForm"]["username"].value;
+	var email = document.forms["signUpForm"]["email"].value;
+	var password = document.forms["signUpForm"]["passwd"].value;
+	var bday = document.forms["signUpForm"]["bday"].value;
+
+	var username = document.forms["signInForm"]["username"].value;
+	var password = document.forms["signInForm"]["passwd"].value;
+});
+
+*/
