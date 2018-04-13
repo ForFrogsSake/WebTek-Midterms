@@ -25,19 +25,21 @@
 	            <h1> Sign Up </h1>
 	        	<fieldset id="personalinfo">
 	                UserName <br>
-	                <input type="text" name="username" placeholder="Pick a Username">
+	                <input type="text" name="username" placeholder="Pick a Username" >
+	                <p id="duplicate"></p>
 	                <br>
 	                Email <br>
 	                <input type="email" name="email" placeholder="you@example.com">
+	                <p id="valid"></p>
 	                <br>
 	                Password <br>
 	                <input type="password" name="passwd" placeholder="Create a password">
 	                <br>
 	                Birthdate <br>
-	                <input type="date" name="bday">
+	                <input type="date" name="bday" max="2018-12-31">
 	                <br><br><br>
 	                 <!-- <a href="../index.html"> </a>-->
-	                <button type="button" onclick="signUp()"> Submit!</button>
+	                <button type="button" id="button" onclick="signUp()"> Submit!</button>
 	            </fieldset>
 	        </form>
         </div> 

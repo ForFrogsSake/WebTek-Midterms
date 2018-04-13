@@ -86,7 +86,10 @@ function signUp(){
 	}
 
 	transaction.onerror = function(e){
-		console.log('error transaction, baka may duplicate');
+		document.getElementById("duplicate").innerHTML = "Username already taken";
+		validate();
+		disableSubmit();
+		//lengthPass();
 	}
 
 	var username = document.forms['signUpForm']['username'].value;
@@ -103,10 +106,13 @@ function signUp(){
 
 	var objectStore = transaction.objectStore("users");
 	var request = objectStore.add(newUser);
+
 	request.onsuccess = function(e){
 		console.log(e);
 		console.log('added new user' + newUser.username);
+		//window.location = "signin.html";
 	}
+
 }
 
 function signIn(){
@@ -124,7 +130,8 @@ function signIn(){
 		//undefined meaning walang username na nahanap sa db
 		if(request.result == undefined){ 
 			console.log('User not found!');
-			document.getElementById("usernameError").innerHTML = "Username or Password isncorrect!";
+			document.getElementById("Error").innerHTML = "Username or Password isncorrect!";
+			window.location = "signin.html";
 		}else{
 			console.log(request.result.username); //if di siya undefined print yung username
 			if (request.result.password == passwd){ //yung passwd ay correct
@@ -146,7 +153,38 @@ function signIn(){
 	request.onerror = function(e){
 		console.log('failed objectStore');
 	};
+};
+
+function validate(){
+    var email = document.forms['signUpForm']['email'].value;
+    var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!emailFilter.test(email)) {
+        document.getElementById("valid").innerHTML = "Please enter a valid email.";
+        return false;
+        disableSubmit();
+    }
+    return true;
 }
+
+function disableSubmit(){
+	var x = document.getElementById("button").disable;	
+	document.getElementById("button").value = x;
+}
+
+/*
+function lengthPass(){
+	var passwd = document.forms["signUpForm"]["passwd"].value;
+
+	if(passwd.value.length = 8){
+		console.log('good pass');
+	}else if(passwd.value.length > 8) {
+		console.log('strong');
+	}else {
+		console.log('bad');
+	}
+}
+
 
 
 
