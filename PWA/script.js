@@ -124,6 +124,7 @@ function signIn(){
 		//undefined meaning walang username na nahanap sa db
 		if(request.result == undefined){ 
 			console.log('User not found!');
+			document.getElementById("usernameError").innerHTML = "Username or Password isncorrect!";
 		}else{
 			console.log(request.result.username); //if di siya undefined print yung username
 			if (request.result.password == passwd){ //yung passwd ay correct
@@ -133,16 +134,24 @@ function signIn(){
 				//window.location = "../index.html"; //punta siya sa home
 			}else { //if hindi correct
 				console.log('wrong password');
-				//window.location = "sign.html"; //reload yung sign html
+				//window.location = "signin.html"; //reload yung sign html;
+
+				//var errorNode = document.createElement("p");
+
+				document.getElementById("passwordError").innerHTML = "Incorrect password";
 			}
 		}
-	}
+	};
 
 	request.onerror = function(e){
 		console.log('failed objectStore');
-	}
+	};
 }
 
+
+
+
+/*
 function addReview(){
 	console.log('yo');
 
