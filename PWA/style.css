@@ -111,7 +111,7 @@ body header div .option:hover{
     box-sizing: border-box;
     background-color: #ffdd4d;
     border-bottom: solid 0.3vh #303030;
-    grid-template-columns: 95% 5%;
+    grid-template-columns: 92.5% 7.5%;
 }
 
 #search input[type=text]{
