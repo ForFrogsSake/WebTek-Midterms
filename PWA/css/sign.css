@@ -195,6 +195,32 @@ footer{
     box-sizing:border-box;
 }
 
+#about{
+    width:60%;
+    height:auto;
+    margin:auto;
+    text-align: center;
+}
+
+#about h2{
+    width:100%;
+    height:auto;
+    margin:auto;
+    padding: 20vh 0vh 3vh 0vh;
+    text-align: center;
+    font-family: lemon;
+}
+
+#about p{
+    width:100%;
+    height:auto;
+    margin:auto;
+    padding: 0vh 0vh 20vh 0vh;
+    text-align: center;
+    font-family: aktiv;
+    font-weight:bold;
+}
+
 @media screen and (max-width: 600px){
     body div form fieldset {
         width: 100%;
