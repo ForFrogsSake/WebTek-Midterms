@@ -1,0 +1,97 @@
+list = [
+	{
+		"Name" : "High Point Restaurant",
+		"Location" : "Kennon Road Camp 7",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "Chef's Home",
+		"Location" : "No. 88 Unit C, Old Sicat Hotel",
+		"Desc" : "Cosy, Casual and Groups"
+	},
+	{
+		"Name" : "Chaya",
+		"Location" : "72 Legarda Road",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "Cafe By The Ruins Dua",
+		"Location" : "255 Upper Session Road",
+		"Desc" : "Breakfast, Cosy and Casual"
+	},
+	{
+		"Name" : "Forest House",
+		"Location" : "16 Loakan Road",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "O' Mai Khan",
+		"Location" : "Session Road",
+		"Desc" : "All you can eat, Cosy and Casual"
+	},
+	{
+		"Name" : "Hill Station",
+		"Location" : "Casa Vallejo, Upper Session Road", 
+		"Desc" : "Breakfast, Great cocktails and Cosy"
+	},
+	{
+		"Name" : "Wood Nymph Korean Restaurant",
+		"Location" : "Luneta Hill Drive",
+		"Desc" : "Casual, Good for kids and Groups"
+	},
+	{
+		"Name" : "Oh My Gulay",
+		"Location" : "108, Session Road",	
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "GRUMPY JOE",
+		"Location" : "Leonard Wood Road",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "50s Diner",
+		"Location" : "105 Session Road",
+		"Desc" : "Casual, Good for kids and Groups" 
+	},
+	{
+		"Name" : "Korean Palace Restaurant",
+		"Location" : "38 South Drive",
+		"Desc" : "All you can eat, Cosy and Casual"
+	},
+	{
+		"Name" : "Good Taste Cafe & Restaurant",
+		"Location" : "Rajah Matanda Streett",
+		"Desc" : " Late-night food, Casual and Vegetarian options"
+	},
+	{
+		"Name" : "Amare La Cucina",
+		"Location" : "#1 Villamor Drive, Barangay Lualhati",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "Chocolate de Batirol",
+		"Location" : "Igorot Park",
+		"Desc" : "Cosy, Casual and Good for kids"
+	},
+	{
+		"Name" : "Lemon and Olives Greek Taverna",
+		"Location" : "#26 Outlook Drive, Baguio City",
+		"Desc" : "Authentic Greek restaurant, Cosy and Romantic dates"
+	},
+	{
+		"Name" : "Foggy Mountain Cookhouse",
+		"Location" : "172 St Joseph Street, San Carlos Heights, Baguio City",
+		"Desc" : "Mediterranean-inspired dishes, Families and Couples who love the sunset"
+	},
+	{
+		"Name" : "Cafe Will",
+		"Location" : "11 M.H. Del Pilar St, Brgy. Burnham – Legarda, Baguio",
+		"Desc" : "Asian, American, and Italian dishes and Good Ambience"
+	},
+	{
+		"Name"  : "Arca’s Yard",
+		"Location" : "777 Tiptop, Ambuklao Road, Baguio City",
+		"Desc" : "Bed and Breakfast and Cozy Library Cafe"
+	}		
+]

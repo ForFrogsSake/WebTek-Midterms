@@ -204,14 +204,12 @@ function addReview(){
 }
 
 //runs when index.html loads
-function load(){
+function setupIndex(){
     openDB();
     checkSignedInUser();
 
     document.getElementById("reviews").style.display = "none";
-    //document.getElementById("searchBox").addEventListener("input", function(){
-      //  search();
-    //}//);
+    document.getElementById("searchBox").addEventListener("input", search);
 }
 
 //checks if a user is signed in and display username if logged in 
@@ -345,7 +343,7 @@ function rating(){
 
 
 
-/*ss
+
 
 //service worker
 
@@ -380,39 +378,9 @@ self.addEventListener('fetch', function(e){
             if (response){
                 return response;
             }
-
-            var fetchRequest = event.request.clone();
-
-            return fetch(event.request).then(
-            function(response) {
-                if(!response || response.status !== 200 || response.type! == 'basic'){
-                    resturn response;
-                }
-
-                var responseToCache = response.clone();
-
-                caches.opne(wee)
-                .then(function(cache){
-                    cache.put(e.request, responseToCache);
-                });
-                return response;
-                }
-            );
-        })
+            return fetch(event.request);
+        }
+    )
     );
 });
-
-self.addEventListener('active', function(event){
-    var cacheWhitelist= ['BaguioEats','sdada'];
-
-    event.waitUntil(
-        caches.keys().then(function(cacheNames){
-            return Promise.all(
-                cacheNames.map(function(cacheName){
-                    if(cacheWhitelist.indexOf(cacheName) === -1){
-                        return caches.delete(cacheName);
-                    }
-                }))
-        }))
-})
 
