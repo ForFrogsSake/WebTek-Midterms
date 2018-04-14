@@ -104,13 +104,14 @@ body header div .option:hover{
 }
 
 #search{
-    display: block;
+    display: grid;
     margin: auto auto 3vh auto;
     width: 100%;
     padding: 2vh 2vh 2vh 2vh;
     box-sizing: border-box;
     background-color: #ffdd4d;
     border-bottom: solid 0.3vh #303030;
+    grid-template-columns: 95% 5%;
 }
 
 #search input[type=text]{
@@ -129,8 +130,18 @@ body header div .option:hover{
 }
 
 #search input[type=text]:focus{
-    border-radius: 5vh;
     box-shadow: 0vh 0.2vh 1vh #303030;
+}
+
+#search button{
+    width:100%;
+    height: auto;
+    background-color: #a3e5ce;
+    background-image: url(images/search.png);
+    background-size: 3.5vh 3.5vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: solid 0.3vh #303030;
 }
 
 #searchArea{
@@ -384,7 +395,7 @@ footer{
     box-sizing:border-box;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1024px){
     body{
         display: block;
     }
@@ -393,6 +404,10 @@ footer{
         width: 100%;
         border-left: none;
         border-right: none;
+    }
+    
+    #search{
+        grid-template-columns: 85% 15%;
     }
 
     #searchArea{
@@ -439,6 +454,6 @@ footer{
     
     footer{
         width: 100%;
-        font-size: 1.8vh;
+        font-size: 1.5vh;
     }
 }
