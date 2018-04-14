@@ -226,7 +226,7 @@ body header div .option:hover{
     font-family: lemon;
     font-size: 4vh;
     padding: 5vh 0vh 0.1vh 0vh;
-    border-bottom: solid 0.3vh #303030;
+    border-bottom: solid 0.1vh #303030;
 }
 
 #title h3{
