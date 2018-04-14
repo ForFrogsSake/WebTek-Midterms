@@ -141,7 +141,7 @@ body div form fieldset input:focus {
 
 body div form fieldset button{
     display: block;
-    width: 10%;
+    min-width: 15%;
     height: auto;
     margin: 4vh auto auto auto;
     padding: 1vh;
