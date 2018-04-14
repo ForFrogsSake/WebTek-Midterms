@@ -79,6 +79,26 @@ function openDB(){
 
 function signUp(){
 	console.log('asdasd');
+
+	var username = document.forms['signUpForm']['username'].value;
+	var email = document.forms['signUpForm']['email'].value;
+	var passwd = document.forms['signUpForm']['passwd'].value;
+	var birth = document.forms['signUpForm']['bday'].value;
+
+	if(username == "" || email == "" || passwd == "" || birth == ""){
+		console.log('walang inenter cancel db');
+		return;
+	}
+
+	if(!validate()){
+		console.log('mali email');
+		return; //di na magrurun yung mga nasa baba 
+	}
+
+	if(!lengthPass(passwd)){
+		return;
+	}
+
 	var transaction = db.transaction(["users"], "readwrite");
 
 	transaction.oncomplete = function(e){
@@ -86,16 +106,13 @@ function signUp(){
 	}
 
 	transaction.onerror = function(e){
-		document.getElementById("duplicate").innerHTML = "Username already taken";
+		console.log('huwaw');
+		document.getElementById("duplicate").innerHTML = "Username already taken.";
 		disableSubmit();
 		validate();
-		//lengthPass();
+		lengthPass();
 	}
 
-	var username = document.forms['signUpForm']['username'].value;
-	var email = document.forms['signUpForm']['email'].value;
-	var passwd = document.forms['signUpForm']['passwd'].value;
-	var birth = document.forms['signUpForm']['bday'].value;
 
 	var newUser = {
 		"username":username,
@@ -110,7 +127,7 @@ function signUp(){
 	request.onsuccess = function(e){
 		console.log(e);
 		console.log('added new user' + " " + newUser.username);
-		//window.location = "signin.html";
+		window.location = "signin.html";
 	}
 
 }
@@ -130,7 +147,7 @@ function signIn(){
 		//undefined meaning walang username na nahanap sa db
 		if(request.result == undefined){ 
 			console.log('User not found!');
-			document.getElementById("Error").innerHTML = "Username or Password isncorrect!";
+			document.getElementById("Error").innerHTML = "Username or Password incorrect!";
 			window.location = "signin.html";
 		}else{
 			console.log(request.result.username); //if di siya undefined print yung username
@@ -159,50 +176,43 @@ function validate(){
     var email = document.forms['signUpForm']['email'].value;
     var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
 
+    disableSubmit();
     if (!emailFilter.test(email)) {
         document.getElementById("valid").innerHTML = "Please enter a valid email.";
         return false;
-        disableSubmit();
     }
     return true;
 }
 
 function disableSubmit(){
-	var x = document.getElementById("button").disable;	
-	document.getElementById("button").innerHTML = x;
+	document.getElementById("button").disable = true;	
 }
 
-/*
-function lengthPass(){
-	var passwd = document.forms['signUpForm']['passwd'].value;
-	var passwdLength = passwd.value.length;
+function lengthPass(passwd){
 
+	disableSubmit();
+	if(passwd == '' || passwd.length<8){
+		document.getElementById("passwd").innerHTML = 'Password too short';
+		return false;
+	}	
 
-	if(passwd.value == '' || passwdLength<8){
-		console log('password too short')
-	}
-
-
-	if(passwd.value.length = 8){
+	if(passwd.length = 8){
 		console.log('good pass');
-	}else if(passwd.value.length > 8) {
+	}else if(passwd.length > 8) {
 		console.log('strong');
 	}else {
 		console.log('bad');
 	}
+
+	return true;
 }
-
-
-
-
 
 /*
 function addReview(){
 	console.log('yo');
 
 	var transaction = db.transaction(["reviews"], "readwrite");
-
-	transaction.oncomplete = function(e){
+transaction.oncomplete = function(e){
 		console.log('haloo');
 	}
 
