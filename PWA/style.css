@@ -47,16 +47,17 @@ body{
 }
 
 body header{
-    width:100%;
-    height: 34.5vh;
+    width:60%;
+    height: 45vh;
     background-color: #9fe2cc;
     background-image: url(images/Kitchenware-Background.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 205vh auto;
+    margin: auto;
     padding: 9.5vh 0vh 0vh 0vh;
-    border-bottom: solid 0.3vh #303030;
-    border-top: solid 0.3vh #303030;
+    border: solid 0.3vh #303030;
+    box-sizing:border-box;
 }
 
 body header img{
@@ -73,7 +74,7 @@ body header div{
     padding: 0.8vh 0.4vh 0.4vh 0.4vh;
     width: 30vh;
     height: 2vh;
-    color: #9fb5e2; 
+    color: #9fb5e2;
     background-color: #ffffff;
     transition: 0.2s;
     border-radius: 2vh;
@@ -103,13 +104,14 @@ body header div .option:hover{
 }
 
 #search{
-    display: block;
+    display: grid;
     margin: auto auto 3vh auto;
     width: 100%;
     padding: 2vh 2vh 2vh 2vh;
     box-sizing: border-box;
-    background-color: #e5c851;
+    background-color: #ffdd4d;
     border-bottom: solid 0.3vh #303030;
+    grid-template-columns: 95% 5%;
 }
 
 #search input[type=text]{
@@ -128,8 +130,18 @@ body header div .option:hover{
 }
 
 #search input[type=text]:focus{
-    border-radius: 5vh;
     box-shadow: 0vh 0.2vh 1vh #303030;
+}
+
+#search button{
+    width:100%;
+    height: auto;
+    background-color: #a3e5ce;
+    background-image: url(images/search.png);
+    background-size: 3.5vh 3.5vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: solid 0.3vh #303030;
 }
 
 #searchArea{
@@ -141,6 +153,7 @@ body header div .option:hover{
     border-top: none;
     border-bottom:none;
     box-sizing:border-box;
+    background-color: #f4f3c3;
 }
 
 .resultContainer{
@@ -160,10 +173,11 @@ body header div .option:hover{
     border-radius: 0vh;
     background-color: transparent;
     text-align: center;
+    cursor: pointer;
 }
 
 .result:hover{
-    border: solid 0.3vh #e5d389;
+    border: solid 0.3vh #7accae;
     border-radius: 5vh;
 }
 
@@ -193,7 +207,7 @@ body header div .option:hover{
     width: 60%;
     height: auto;
     margin: 0vh auto auto auto;
-    padding: 5vh 0vh 5vh 0vh;
+    padding: 5vh 0vh 10vh 0vh;
     border: solid 0.3vh #303030;
     border-top: solid 0.3vh #303030;
     background-color: #ffffff;
@@ -212,7 +226,7 @@ body header div .option:hover{
     font-family: lemon;
     font-size: 4vh;
     padding: 5vh 0vh 0.1vh 0vh;
-    border-bottom: solid 0.3vh #303030;
+    border-bottom: solid 0.1vh #303030;
 }
 
 #title h3{
@@ -266,8 +280,12 @@ body header div .option:hover{
     margin: 1vh auto 3vh auto;
     padding: 1vh;
     box-sizing:border-box;
-    background-color: #f0f0f0;
+    background-color: #f5f5dc;
     border: solid 0.3vh #303030;
+}
+
+#addReview input[type=number]:focus{
+    border: solid 0.3vh #d8b212;
 }
 
 #addReview textarea{
@@ -278,8 +296,12 @@ body header div .option:hover{
     padding: 1vh;
     box-sizing:border-box;
     resize: none;
-    background-color: #f0f0f0;
+    background-color: #f5f5dc;
     border: solid 0.3vh #303030;
+}
+
+#addReview textarea:focus{
+    border: solid 0.3vh #d8b212;
 }
 
 #addReview input[type=submit]{
@@ -296,6 +318,7 @@ body header div .option:hover{
     font-family: helvetica;
     font-size: 3vh;
     text-align: center;
+    cursor: pointer;
 }
 
 #addReview input[type=submit]:hover{
@@ -323,6 +346,7 @@ body header div .option:hover{
     text-align: left;
     font-family: lemon;
     font-size: 5vh;
+    box-sizing:border-box;
 }
 
 .contentCard{
@@ -355,23 +379,35 @@ body header div .option:hover{
 .contentCard p{
     font-family:helvetica;
     margin:1vh;
+    font-size: 2vh;
     font-weight: lighter;
 }
 
 footer{
-    width: 100%;
+    width: 60%;
     height: auto;
-    margin: 20vh 0vh 0vh 0vh;
+    margin: auto;
     padding: 1.5vh;
     font-family: orator;
     font-size: 2vh;
     text-align: center;
     background-color: #9fe2cc;
+    box-sizing:border-box;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1024px){
     body{
         display: block;
+    }
+    
+    body header{
+        width: 100%;
+        border-left: none;
+        border-right: none;
+    }
+    
+    #search{
+        grid-template-columns: 85% 15%;
     }
 
     #searchArea{
@@ -417,6 +453,7 @@ footer{
     }
     
     footer{
-        font-size: 1vh;
+        width: 100%;
+        font-size: 1.5vh;
     }
 }

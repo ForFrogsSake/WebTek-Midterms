@@ -1,16 +1,39 @@
 @font-face{
     font-family: aktiv;
     src: url(../fonts/aktiv.ttf);
-    
+}
+
+@font-face{
     font-family: bebas;
     src: url(../fonts/bebas.ttf);
-    
+}
+
+@font-face{
     font-family: basic;
     src: url(../fonts/basic.ttf);
 }
 
+@font-face{
+    font-family: orator;
+    src: url(../fonts/orator.otf);
+}
+
+@font-face{
+    font-family: lemon;
+    src: url(../fonts/lemon.otf);
+}
+
+@font-face{
+    font-family: lemonlight;
+    src: url(../fonts/lemonlight.otf);
+}
+
 a{
     text-decoration: none;
+}
+
+textarea:focus, input:focus, button:focus{
+    outline: none;
 }
 
 body{
@@ -26,6 +49,8 @@ body header{
     background-repeat: no-repeat;
     background-size: 205vh auto;
     padding: 9.5vh 0vh 0vh 0vh;
+    border-bottom: solid 0.3vh #303030;
+    border-top: solid 0.3vh #303030;
 }
 
 body header img{
@@ -71,38 +96,74 @@ body header div .option:hover{
     color: #e4ea68;
 }
 
-body footer {
-    width: 100%;
-    height: auto;
-}
-
 body div form h1 {
-    font-family: basic;
+    font-family: lemon;
     text-align: center;
 }
 
 body div form {
-    padding: 10vh;
+    height: auto;
+    width: 100%;
+    padding: 10vh 0vh 10vh 0vh;
+    box-sizing: border-box;
 }
 
 body div form fieldset {
-    height: 46vh;
-    width: 50vh;
+    height: auto;
+    width: 80%;
     margin: auto;
     border: none;
     text-align: center;
     font-size: 3vh;
+    font-family: helvetica;
+    box-sizing:border-box;
     
 }
 
 body div form fieldset input {
-    font-size: 2vh;
     font-family: aktiv;
+    font-weight: bold;
+    font-size: 2vh;
+    width: 20%;
+    height: auto;
+    margin: 1vh auto 3vh auto;
+    padding: 2vh;
+    box-sizing:border-box;
+    background-color: #f5f5dc;
+    border: solid 0.3vh #303030;
+    transition: 0.5s;
 }
 
-body div form fieldset button {
-    font-size: 3vh;
+body div form fieldset input:focus {
+    border-radius: 10vh;
+    border: solid 0.3vh #d8b212;
+}
 
+body div form fieldset button{
+    display: block;
+    width: 10%;
+    height: auto;
+    margin: 4vh auto auto auto;
+    padding: 1vh;
+    box-sizing:border-box;
+    border: solid 0.3vh #303030;
+    transition: 0.3s;
+    border-radius: 0vh;
+    background-color: transparent;
+    font-family: helvetica;
+    font-size: 3vh;
+    text-align: center;
+    cursor: pointer;
+}
+
+body div form fieldset button:hover{
+    border: solid 0.3vh #e5d389;
+    border-radius: 3vh;
+}
+
+body div form fieldset button:focus{
+    border-radius: 5vh;
+    background-color: #e5d389;
 }
 
 .separator {
@@ -120,4 +181,61 @@ body div form fieldset button {
     background: #ffffff;
     color: black;
     font-size: 3vh;
+}
+
+footer{
+    width: 100%;
+    height: auto;
+    margin: 0vh 0vh 0vh 0vh;
+    padding: 1.5vh;
+    font-family: orator;
+    font-size: 2vh;
+    text-align: center;
+    background-color: #9fe2cc;
+    box-sizing:border-box;
+}
+
+#about{
+    width:60%;
+    height:auto;
+    margin:auto;
+    text-align: center;
+}
+
+#about h2{
+    width:100%;
+    height:auto;
+    margin:auto;
+    padding: 20vh 0vh 3vh 0vh;
+    text-align: center;
+    font-family: lemon;
+}
+
+#about p{
+    width:100%;
+    height:auto;
+    margin:auto;
+    padding: 0vh 0vh 20vh 0vh;
+    text-align: center;
+    font-family: aktiv;
+    font-weight:bold;
+}
+
+@media screen and (max-width: 600px){
+    body div form fieldset {
+        width: 100%;
+
+    }
+
+    body div form fieldset input {
+        width: 70%;
+    }
+
+    body div form fieldset button{
+        width: 50%;
+    }
+    
+    footer{
+        font-size: 1.5vh;
+    }
 }
