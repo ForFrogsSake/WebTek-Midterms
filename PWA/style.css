@@ -74,7 +74,7 @@ body header div{
     padding: 0.8vh 0.4vh 0.4vh 0.4vh;
     width: 30vh;
     height: 2vh;
-    color: #9fb5e2; 
+    color: #9fb5e2;
     background-color: #ffffff;
     transition: 0.2s;
     border-radius: 2vh;
@@ -166,7 +166,7 @@ body header div .option:hover{
 }
 
 .result:hover{
-    border: solid 0.3vh #f2de4e;
+    border: solid 0.3vh #7accae;
     border-radius: 5vh;
 }
 
