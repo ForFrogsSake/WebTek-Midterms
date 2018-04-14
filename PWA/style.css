@@ -367,6 +367,7 @@ body header div .option:hover{
 .contentCard p{
     font-family:helvetica;
     margin:1vh;
+    font-size: 2vh;
     font-weight: lighter;
 }
 
