@@ -1,55 +1,5 @@
 
 
-// var thisDb;
-
-// var request = window.indexedDB.open("UserDatabase");
-
-// request.onsuccess = function(e) {
-//     console.log("Success!");
-//         thisDb = request.result;
-// };
- 
- 
-// request.onupgradeneeded = function(e){
-// 	console.log(e.target);
-// 	thisDb = e.target.result;
-
-// 	var userStore = thisDb.createObjectStore("users", {keyPath: "username"});
-
-// 	//Define what data items the userStore will contain 
-// 	userStore.createIndex = ("name", "name", {unique: false}); //a name can be duplicated therefore we will not unique index 
-// 	userStore.createIndex = ("email", "email", {unique: true}); //every user should have a unique email 
-// 	userStore.createIndex = ("passwd", "passwd", {unique: false});
-// 	userStore.createIndex = ("bday", "bday", {unique: false});
-	
-// 	//newUser();
-
-// 	};
-
-// function newUser(){
-// 	var newUsers = [{name: "kyla", email: "kyla@email.com", passwd: "123", bday: 09/09/09}];
-// 	var userTransaction = thisDb.transaction("[users]", "readwrite");
-
-// 	userTransaction.oncomplete = function(e){
-// 		console.log('Transaction complete');
-// 		thisDb = userTransaction.result;
-// 	};
-
-// 	userTransaction.onerror = function(e){
-// 		console.log('Error');
-
-// 	};
-
-// 	var userDataStore = userTransaction.userStore("users");
-
-// 	var store = userStore.add(newUsers[0]);
-
-// 	store.onsuccess = function(e){
-// 		console.log('Success');
-// 	};
-// };
-
-
 function openDB(){
 	var request = indexedDB.open("BaguioEatsDB", 1);
 	request.onerror = function(e){
@@ -69,9 +19,8 @@ function openDB(){
 
 
 		var objectStore = db.createObjectStore("reviews", {keyPath: "username"});
-		objectStore.createIndex("username", "username", {unique:true});
-		objectStore.createIndex("restaurant", "restaurant", {unique:true});
 		objectStore.createIndex("rating", "rating", {unique:false});
+		objectStore.createIndex("comment", "comment", {unique:false});
 
 	}
 
@@ -113,7 +62,6 @@ function signUp(){
 		lengthPass();
 	}
 
-
 	var newUser = {
 		"username":username,
 		"password":passwd,
@@ -148,14 +96,14 @@ function signIn(){
 		if(request.result == undefined){ 
 			console.log('User not found!');
 			document.getElementById("Error").innerHTML = "Username or Password incorrect!";
-			window.location = "signin.html";
+			//window.location = "signin.html";
 		}else{
 			console.log(request.result.username); //if di siya undefined print yung username
 			if (request.result.password == passwd){ //yung passwd ay correct
 				console.log('yay');
 				sessionStorage.setItem("user", JSON.stringify({"username": username, "password": passwd}));
 				//to check if the user is login 
-				//window.location = "../index.html"; //punta siya sa home
+				window.location = "../index.html"; //punta siya sa home
 			}else { //if hindi correct
 				console.log('wrong password');
 				//window.location = "signin.html"; //reload yung sign html;
@@ -170,7 +118,7 @@ function signIn(){
 	request.onerror = function(e){
 		console.log('failed objectStore');
 	};
-};
+}
 
 function validate(){
     var email = document.forms['signUpForm']['email'].value;
@@ -186,6 +134,7 @@ function validate(){
 
 function disableSubmit(){
 	document.getElementById("button").disable = true;	
+	document.getElementById("submit").disable = true;
 }
 
 function lengthPass(passwd){
@@ -196,7 +145,7 @@ function lengthPass(passwd){
 		return false;
 	}	
 
-	if(passwd.length = 8){
+	if(passwd.length == 8){
 		console.log('good pass');
 	}else if(passwd.length > 8) {
 		console.log('strong');
@@ -207,25 +156,90 @@ function lengthPass(passwd){
 	return true;
 }
 
-/*
 function addReview(){
+	//Alerts and stops the process if no user is logged in 
+	if (sessionStorage.getItem("user") === null){
+		alert("Not signed in");
+		//window.location = "signin.html";
+		return;
+	}
+
 	console.log('yo');
 
+	var username = JSON.parse(sessionStorage.getItem('user')).username;
+	var rating = document.forms['addReviewForm']['rating'].value; 
+	var comment = document.forms['addReviewForm']['comment'].value;
+
+	if(rating == "" || comment == ""){
+		console.log('walang inenter cancel db');
+		return;
+		disableSubmit();
+	}
+
 	var transaction = db.transaction(["reviews"], "readwrite");
-transaction.oncomplete = function(e){
+
+	transaction.oncomplete = function(e){
 		console.log('haloo');
 	}
 
 	transaction.onerror = function(e){
-		console.log('error');
+		console.log('error')
+;	}
+
+	var newReview = {
+		"username": username,
+		"rating": rating,
+		"comment":  comment
 	}
 
-	var restaurant = document.forms['addReview']['restaurant'].value;
-	var rating = document.forms['addReview']['']
+	var objectStore = transaction.objectStore("reviews");
+	var request = objectStore.add(newReview);
+
+	request.onsuccess = function(e){
+		console.log(e);
+		console.log('added a new review' + " " + newReview.rating);
+		//window.location = "signin.html";
+	}
+}
+
+//runs when index.html loads
+function setUpIndex(){
+	openDB();
+	checkSignedInUser();
+}
+
+//checks if a user is signed in and display username if logged in 
+function checkSignedInUser(){
+	console.log('yoyoyo');
+
+	if(sessionStorage.getItem("user") === null){
+		document.getElementById("loggedInUser").innerHTML = "Not Signed In";
+	}else {
+		document.getElementById("loggedInUser").innerHTML = JSON.parse(sessionStorage.getItem("user")).username;
+	}
+}
+
+
+function rating(){
+	var rating = document.forms['addReview']['rating'].value;
+
+	if(rating.result == 5){
+
+	}
 }
 
 
 
+
+/*
+var searchKey = document.forms["search1"]["input"].value;
+
+data.forEach(function(d) {
+	if(d.name == searchKey){
+		console.log('wow');
+		break;
+	}
+}
 
 
 /*
