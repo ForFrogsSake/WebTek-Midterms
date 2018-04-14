@@ -208,5 +208,8 @@ footer{
     body div form fieldset button{
         width: 50%;
     }
-
+    
+    footer{
+        font-size: 1.8vh;
+    }
 }
