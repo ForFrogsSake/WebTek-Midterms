@@ -126,7 +126,7 @@ body div form fieldset input {
     font-size: 2vh;
     width: 20%;
     height: auto;
-    margin: 1vh auto 3vh auto;
+    margin: -1vh auto 3vh auto;
     padding: 2vh;
     box-sizing:border-box;
     background-color: #f5f5dc;
@@ -166,23 +166,6 @@ body div form fieldset button:focus{
     background-color: #e5d389;
 }
 
-.separator {
-    margin: 5vh 10vh;
-    border-top: 0.5vh solid #cccccc;
-    position: relative;
-}
-
-.separator-or {
-    position: absolute;
-    top: -2vh;
-    left: 50%;
-    margin-left: -5vh;
-    padding: 0vh 2vh;
-    background: #ffffff;
-    color: black;
-    font-size: 3vh;
-}
-
 footer{
     width: 100%;
     height: auto;
@@ -193,6 +176,9 @@ footer{
     text-align: center;
     background-color: #9fe2cc;
     box-sizing:border-box;
+    border: solid 0.3vh #303030;
+    border-left: none;
+    border-right: none;
 }
 
 #about{
@@ -236,6 +222,7 @@ footer{
     }
     
     footer{
+        width: 100%;
         font-size: 1.5vh;
     }
 }

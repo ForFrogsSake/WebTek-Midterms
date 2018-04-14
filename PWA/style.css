@@ -105,7 +105,7 @@ body header div .option:hover{
 
 #search{
     display: grid;
-    margin: auto auto 3vh auto;
+    margin: auto;
     width: 100%;
     padding: 2vh 2vh 2vh 2vh;
     box-sizing: border-box;
@@ -127,6 +127,8 @@ body header div .option:hover{
     transition: 0.5s;
     margin:0vh;
     box-sizing:border-box;
+    font-family: aktiv;
+    font-weight: bold;
 }
 
 #search input[type=text]:focus{
@@ -148,7 +150,6 @@ body header div .option:hover{
     width: 60%;
     height: auto;
     margin: auto;
-    padding: 0vh 0vh 3vh 0vh;
     border: solid 0.3vh #303030;
     border-top: none;
     border-bottom:none;
@@ -158,10 +159,29 @@ body header div .option:hover{
 
 .resultContainer{
     width: 100%;
+    min-height: 39.4vh;
+    max-height: 50vh;
     margin: auto;
     font-family: helvetica;
     box-sizing:border-box;
-    padding: 0vh 3vh 0vh 3vh;
+    padding: 3vh 3vh 3vh 3vh;
+    overflow: auto;
+}
+
+.resultContainer::-webkit-scrollbar{
+    width: 1vh;
+    height:100%;
+    background-color: #e0e0e0;
+    border-radius: 5vh;
+}
+
+.resultContainer::-webkit-scrollbar-thumb{
+    background-color: #c0c0c0;
+    border-radius: 5vh;
+}
+
+.resultContainer::-webkit-scrollbar-button{
+    display: none;
 }
 
 .result{
@@ -393,6 +413,7 @@ footer{
     text-align: center;
     background-color: #9fe2cc;
     box-sizing:border-box;
+    border: solid 0.3vh #303030;
 }
 
 @media screen and (max-width: 1024px){
@@ -455,5 +476,7 @@ footer{
     footer{
         width: 100%;
         font-size: 1.5vh;
+        border-left: none;
+        border-right: none;
     }
 }

@@ -204,14 +204,14 @@ function addReview(){
 }
 
 //runs when index.html loads
-function load(){
+function setupIndex(){
     openDB();
     checkSignedInUser();
 
     document.getElementById("reviews").style.display = "none";
-    //document.getElementById("searchBox").addEventListener("input", function(){
-      //  search();
-    //}//);
+    document.getElementById("searchBox").addEventListener("input", function(){
+       search();
+    });
 }
 
 //checks if a user is signed in and display username if logged in 
@@ -416,3 +416,4 @@ self.addEventListener('active', function(event){
         }))
 })
 
+*/
