@@ -34,22 +34,13 @@ function signUp(){
     var passwd = document.forms['signUpForm']['passwd'].value;
     var birth = document.forms['signUpForm']['bday'].value;
 
-    if(!validateInput()){
-        console.log('huwaw');
-        return;
-    }
-    
-    if(!validate()){
-        console.log('mali email');
-        document.getElementById("valid").innerHTML = "Please enter a valid email.";
-        return;
-    }
+    var inputs = validateInput();
+    var validEmail = validate();
+    var validPass = lengthPass(passwd);
 
-    if(!lengthPass(passwd)){
-        console.log('kkk')
-        document.getElementById("passwd").innerHTML = 'Password too short. Use at least 8 characters';
+    if (!inputs || !validEmail || !validPass){
         return;
-    }   
+    }
 
     var transaction = db.transaction(["users"], "readwrite");
 
@@ -84,23 +75,12 @@ function signUp(){
 function validateInput(){
     var valid = true;
     var username = document.forms['signUpForm']['username'].value;
-    var email = document.forms['signUpForm']['email'].value;
-    var passwd = document.forms['signUpForm']['passwd'].value;
     var bday = document.forms['signUpForm']['bday'].value;
+
       if(username == ""){
           document.getElementById('duplicate').innerHTML = "*Field is empty";
           valid = false;
-      }
-
-      if(email == ""){
-          document.getElementById('valid').innerHTML = "*Field is empty";
-          valid = false;
-      }
-
-      if(passwd == ""){
-        document.getElementById('passwd').innerHTML = "*Field is    empty";
-        valid = false;
-      }
+      } 
 
       if(bday == ""){
         document.getElementById('bday').innerHTML  = "*Field is empty";
@@ -108,6 +88,26 @@ function validateInput(){
       }
 
   return valid;
+}
+
+function setupSignUp(){
+    openDB();
+
+    document.getElementById("1").addEventListener("click", function(){
+        document.getElementById("duplicate").innerHTML = "";
+    });
+
+    document.getElementById("2").addEventListener("click", function(){
+        document.getElementById("valid").innerHTML = "";
+    });
+
+    document.getElementById("3").addEventListener("click", function(){
+        document.getElementById("passwd").innerHTML = "";
+    });
+
+    document.getElementById("4").addEventListener("click", function(){
+        document.getElementById("bday").innerHTML = "";
+    });
 }
 
 function signIn(){
@@ -125,21 +125,14 @@ function signIn(){
         //undefined meaning walang username na nahanap sa db
         if(request.result == undefined){ 
             console.log('User not found!');
-            if(confirm('Username or Password incorrect')){
-                window.location.reload();  
-            }
-            /*
-            document.getElementById("Error").innerHTML = "Username or Password incorrect!";
-            setTimeout(function(){
-                window.location.reload(true);
-            }, 2000);*/
+            document.getElementById('Error').innerHTML = "Username or Password incorrect!";
         }else{
             console.log(request.result.username); //if di siya undefined print yung username
             if (request.result.password == passwd){ //yung passwd ay correct
                 console.log('yay');
                 sessionStorage.setItem("user", JSON.stringify({"username": username, "password": passwd}));
                 //to check if the user is login 
-                window.location = "../index.html"; //punta siya sa home
+                window.location = "home.html"; //punta siya sa home
             }else { //if hindi correct
                 console.log('wrong password');
                 //window.location = "signin.html"; //reload yung sign html;
@@ -153,12 +146,29 @@ function signIn(){
     };
 }
 
+function setupSignIn(){
+    openDB();
+
+    document.getElementById("1").addEventListener("click", function(){
+        document.getElementById("Error").innerHTML = "";
+    });
+
+    document.getElementById("2").addEventListener("click", function(){
+        document.getElementById("passwordError").innerHTML = "";
+    });
+}
+
 function validate(){
     var email = document.forms['signUpForm']['email'].value;
     var emailFilter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
 
     disableSignUp();
+    if(email == ""){
+        document.getElementById('valid').innerHTML = "*Field is empty";
+        return;
+    }
     if (!emailFilter.test(email)) {
+        document.getElementById("valid").innerHTML = "Please enter a valid email.";
         return false;
     }
     return true;
@@ -174,9 +184,17 @@ function disableReview(){
 
 function lengthPass(passwd){
 
+    var passwd = document.forms['signUpForm']['passwd'].value;
+
+    if(passwd == ""){
+        document.getElementById('passwd').innerHTML = "*Field is    empty";
+       return;
+    }
+
     disableSignUp();
     if(passwd == '' || passwd.length<8){
-        return false;
+        document.getElementById("passwd").innerHTML = "Password too short. Use at least 8 characters";
+        return;
     }   
 
     if(passwd.length == 8){
@@ -190,24 +208,38 @@ function lengthPass(passwd){
     return true;
 }
 
-function addReview(){
-    //Alerts and stops the process if no user is logged in 
-    if (sessionStorage.getItem("user") === null){
-        //alert("Not signed in");
-        window.location = "signin.html";
-        return;
-    }
+function logout(){
+    sessionStorage.removeItem("user");
+}
 
+function setupHome(){
+    openDB();
+
+    document.getElementById("searchBox").addEventListener("input", function(){
+       search();
+    });
+
+    document.getElementById("1").addEventListener("click", function(){
+        document.getElementById("rate").innerHTML = "";
+    });
+
+    document.getElementById("2").addEventListener("click", function(){
+        document.getElementById("wow").innerHTML = "";
+    });
+}
+
+function addReview(){
     console.log('yo');
 
     var username = JSON.parse(sessionStorage.getItem('user')).username;
     var rating = document.forms['addReviewForm']['rating'].value; 
     var comment = document.forms['addReviewForm']['comment'].value;
 
-    if(rating == "" || comment == ""){
-        console.log('walang inenter cancel db');
+    var validRating = rating();
+    var validComment = review();
+
+    if(!validRating == "" || !validComment == ""){
         return;
-        disableReview();
     }
 
     var transaction = db.transaction(["reviews"], "readwrite");
@@ -218,6 +250,7 @@ function addReview(){
 
     transaction.onerror = function(e){
         console.log('error')
+        disableReview();
 ;   }
 
     var newReview = {
@@ -232,32 +265,44 @@ function addReview(){
     request.onsuccess = function(e){
         console.log(e);
         console.log('added a new review' + " " + newReview.rating);
-        //window.location = "signin.html";
+    }
+}
+
+function review(){
+    var review = document.forms['addReviewForm']['comment'].value;
+
+    if(review == ""){
+        document.getElementById("wow").innerHTML = "Please put a comment here";
+        return;
+    }
+}
+
+function rating(){
+    var rating = document.forms['addReview']['rating'].value;
+
+    if (rating == "" || rating > 5 ){
+        document.getElementById("rate").innerHTML = "Please have a rate";
+        return;
+    }
+    return valid;  
+
+    if(rating == 5){
+        console.log('good pass');
+    }else if(rating < 5) {
+        console.log('strong');
+    }else {
+        console.log('bad');
     }
 }
 
 //runs when index.html loads
 function setupIndex(){
     openDB();
-    checkSignedInUser();
 
-    document.getElementById("reviews").style.display = "none";
     document.getElementById("searchBox").addEventListener("input", function(){
        search();
     });
 }
-
-//checks if a user is signed in and display username if logged in 
-function checkSignedInUser(){
-    console.log('yoyoyo');
-
-    if(sessionStorage.getItem("user") === null){
-        document.getElementById("loggedInUser").innerHTML = "Not Signed In";
-    }else {
-        document.getElementById("loggedInUser").innerHTML = JSON.parse(sessionStorage.getItem("user")).username;
-    }
-}
-
 
 var restaurant = [];
 function search(){
@@ -319,8 +364,6 @@ function openRestaurantReviews(){
         }
     }
 
-
-
     document.getElementById("reviews").style.display = "block";
     document.getElementsByClassName("resultContainer")[0].innerHTML = 
 `
@@ -359,21 +402,6 @@ function openRestaurantReviews(){
         
     // };
     
-}
-
-function rating(){
-    var rating = document.forms['addReview']['rating'].value;
-
-    var value = [rating],
-        count = 0, 
-
-        sum = value.reduce(function(sum, item, index){
-        count += item;
-        return sum + item * (index + 1);
-
-    }, 0);
-
-    console.log(sum / count);
 }
 
 

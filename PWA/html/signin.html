@@ -9,7 +9,7 @@
         <title>Baguio Eats</title>
     </head>
     
-    <body onload="openDB()">
+    <body onload="setupSignIn()">
         <header>
             <img src="../images/Baguio-Eats-Logo.png">
             <div>
@@ -25,9 +25,9 @@
                 <fieldset>
                         <p id="Error"></p>
                         <p>Username</p>
-                        <input type="text" name="username">
+                        <input type="text" name="username" onfocus="this.value=''" value="" id="1">
                         <p>Password</p>
-                        <input type="password" name="passwd">
+                        <input type="password" name="passwd" onfocus="this.value=''" value="" id="2">
                         <p id="passwordError"></p>
                         <button type="button" onclick="signIn()"> Sign In </button>
                 </fieldset>

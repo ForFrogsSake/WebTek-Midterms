@@ -4,20 +4,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="icon" href="images/Baguio-Eats.png">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="icon" href="../images/Baguio-Eats.png">
         <title>Baguio Eats</title>
-        <script type="text/javascript" src="list.json"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="../list.json"></script>
+        <script type="text/javascript" src="../script.js"></script>
     </head>
     
-    <body onload="setupIndex()">
+    <body onload="setupHome()">
         <header>
-            <img src="images/Baguio-Eats-Logo.png">
+            <img src="../images/Baguio-Eats-Logo.png">
             <div>
-                <a href="index.html" class="option">Home</a>
-                <a href="html/about.html" class="option">About</a>
-                <a href="html/signin.html" class="option">Sign In</a>
+                <a href="home.html" class="option">Home</a>
+                <a href="about.html" class="option">About</a>
+                <a href="signin.html" class="option"><button id="logout" onclick="logout()">Logout</button></a>
             </div>
         </header>
         
@@ -45,13 +45,20 @@
             <div id="average">
                 <h2></h2>
             </div>
-           
+            <form id="addReview" name="addReviewForm">
+                <h3 id="loggedInUser">User Name</h3>
+                <p>Rating:</p><input type="number" name="rating" onfocus="this.value=''" value="" id="1"> <p id="rate"></p>
+                <p>Comments:</p>
+                <textarea name="comment" rows="5" cols="10">
+                </textarea onfocus="this.value=''" value="" id="2"> <p id="wow"></p>
+                <input id="submit" type="submit" value="+" onclick="addReview()">
+            </form>
             <h2 id="reviewTitle">Reviews</h2>
             <div id="content">
                 <div class="contentCard">
                     <h3></h3>
                     <h4></h4>
-                    <p></p>
+                    <p id=""></p>
                 </div>
                 <div class="contentCard">
                     <h3></h3>

@@ -9,7 +9,7 @@
 	    <title>Baguio Eats</title>
 	</head>
 
-	<body onload="openDB()">
+	<body onload="setupSignUp()">
 		<header>
             <img src="../images/Baguio-Eats-Logo.png">
             <div>
@@ -24,16 +24,16 @@
 	            <h1> Sign Up </h1>
 	        	<fieldset id="personalinfo">
 	                <p>Username</p>
-	                <input type="text" name="username" placeholder="Pick a Username" onfocus="this.value=''" value="">
+	                <input type="text" name="username" placeholder="Pick a Username" onfocus="this.value=''" value="" id="1">
 	                <p id="duplicate"></p>
 	                <p>Email</p>
-	                <input type="email" name="email" placeholder="you@example.com" onfocus="this.value=''" value="">
-	                <p id="valid"></p> <p id="error"></p>
+	                <input type="email" name="email" placeholder="you@example.com" onfocus="this.value=''" value="" id="2">
+	                <p id="valid"></p> 
 	                <p>Password</p>
-	                <input type="password" name="passwd" placeholder="Create a password" onfocus="this.value=''" value="">
+	                <input type="password" name="passwd" placeholder="Create a password" onfocus="this.value=''" value="" id="3">
                     <p id="passwd"></p> 
 	                <p>Birthdate</p>
-	                <input type="date" name="bday" max="12-31-2018" min="01-01-1998" onfocus="this.value=''" value="">
+	                <input type="date" name="bday" max="12-31-2018" min="01-01-1998" onfocus="this.value=''" value="" id="4">
 	                <p id="bday"></p>
 	                <button type="button" id="button" onclick="signUp()">Submit</button>
 	            </fieldset>
