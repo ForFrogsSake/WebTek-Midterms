@@ -181,11 +181,10 @@ footer{
     border-right: none;
 }
 
-#about{
+#about {
     width:60%;
     height:auto;
     margin:auto;
-    text-align: center;
 }
 
 #about h2{
@@ -197,7 +196,7 @@ footer{
     font-family: lemon;
 }
 
-#about p{
+#about p, #noAccount{
     width:100%;
     height:auto;
     margin:auto;
@@ -205,6 +204,12 @@ footer{
     text-align: center;
     font-family: aktiv;
     font-weight:bold;
+    text-align: center;
+}
+
+#noAccount{
+    padding: 0vh 0vh 6vh 0vh;
+    color: #808080;
 }
 
 @media screen and (max-width: 1024px){
