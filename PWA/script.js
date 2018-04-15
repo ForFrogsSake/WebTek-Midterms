@@ -34,19 +34,22 @@ function signUp(){
     var passwd = document.forms['signUpForm']['passwd'].value;
     var birth = document.forms['signUpForm']['bday'].value;
 
-    if(username == "" || email == "" || passwd == "" || birth == ""){
-        console.log('walang inenter cancel db');
+    if(!validateInput()){
+        console.log('huwaw');
         return;
     }
-
+    
     if(!validate()){
         console.log('mali email');
-        return; //di na magrurun yung mga nasa baba 
+        document.getElementById("valid").innerHTML = "Please enter a valid email.";
+        return;
     }
 
     if(!lengthPass(passwd)){
+        console.log('kkk')
+        document.getElementById("passwd").innerHTML = 'Password too short. Use at least 8 characters';
         return;
-    }
+    }   
 
     var transaction = db.transaction(["users"], "readwrite");
 
@@ -78,6 +81,35 @@ function signUp(){
 
 }
 
+function validateInput(){
+    var valid = true;
+    var username = document.forms['signUpForm']['username'].value;
+    var email = document.forms['signUpForm']['email'].value;
+    var passwd = document.forms['signUpForm']['passwd'].value;
+    var bday = document.forms['signUpForm']['bday'].value;
+      if(username == ""){
+          document.getElementById('duplicate').innerHTML = "*Field is empty";
+          valid = false;
+      }
+
+      if(email == ""){
+          document.getElementById('valid').innerHTML = "*Field is empty";
+          valid = false;
+      }
+
+      if(passwd == ""){
+        document.getElementById('passwd').innerHTML = "*Field is    empty";
+        valid = false;
+      }
+
+      if(bday == ""){
+        document.getElementById('bday').innerHTML  = "*Field is empty";
+        valid = false;
+      }
+
+  return valid;
+}
+
 function signIn(){
     console.log('ad');
     var transaction = db.transaction(["users"]);
@@ -93,8 +125,14 @@ function signIn(){
         //undefined meaning walang username na nahanap sa db
         if(request.result == undefined){ 
             console.log('User not found!');
+            if(confirm('Username or Password incorrect')){
+                window.location.reload();  
+            }
+            /*
             document.getElementById("Error").innerHTML = "Username or Password incorrect!";
-            //window.location = "signin.html";
+            setTimeout(function(){
+                window.location.reload(true);
+            }, 2000);*/
         }else{
             console.log(request.result.username); //if di siya undefined print yung username
             if (request.result.password == passwd){ //yung passwd ay correct
@@ -105,9 +143,6 @@ function signIn(){
             }else { //if hindi correct
                 console.log('wrong password');
                 //window.location = "signin.html"; //reload yung sign html;
-
-                //var errorNode = document.createElement("p");
-
                 document.getElementById("passwordError").innerHTML = "Incorrect password";
             }
         }
@@ -124,7 +159,6 @@ function validate(){
 
     disableSignUp();
     if (!emailFilter.test(email)) {
-        document.getElementById("valid").innerHTML = "Please enter a valid email.";
         return false;
     }
     return true;
@@ -142,7 +176,6 @@ function lengthPass(passwd){
 
     disableSignUp();
     if(passwd == '' || passwd.length<8){
-        document.getElementById("passwd").innerHTML = 'Password too short';
         return false;
     }   
 

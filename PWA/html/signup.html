@@ -24,16 +24,17 @@
 	            <h1> Sign Up </h1>
 	        	<fieldset id="personalinfo">
 	                <p>Username</p>
-	                <input type="text" name="username" placeholder="Pick a Username">
+	                <input type="text" name="username" placeholder="Pick a Username" onfocus="this.value=''" value="">
 	                <p id="duplicate"></p>
 	                <p>Email</p>
-	                <input type="email" name="email" placeholder="you@example.com">
-	                <p id="valid"></p>
+	                <input type="email" name="email" placeholder="you@example.com" onfocus="this.value=''" value="">
+	                <p id="valid"></p> <p id="error"></p>
 	                <p>Password</p>
-	                <input type="password" name="passwd" placeholder="Create a password">
-                    <p id="passwd"></p>
+	                <input type="password" name="passwd" placeholder="Create a password" onfocus="this.value=''" value="">
+                    <p id="passwd"></p> 
 	                <p>Birthdate</p>
-	                <input type="date" name="bday" max="12-31-2018" min="01-01-1998">
+	                <input type="date" name="bday" max="12-31-2018" min="01-01-1998" onfocus="this.value=''" value="">
+	                <p id="bday"></p>
 	                <button type="button" id="button" onclick="signUp()">Submit</button>
 	            </fieldset>
 	        </form>
