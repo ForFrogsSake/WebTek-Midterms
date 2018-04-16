@@ -210,13 +210,13 @@ body header div .option:hover{
     display:block;
 }
 
-.result .resultName{
+.result .resultName:first-child{
     font-size: 3vh;
     font-family: orator;
     letter-spacing: 0.01vh;
 }
 
-.result .resultLocation{
+.result .resultName:last-child{
     font-size: 2.3vh;
     font-family: aktiv;
     font-weight: bold;
@@ -324,7 +324,7 @@ body header div .option:hover{
     border: solid 0.3vh #d8b212;
 }
 
-#addReview input[type=submit]{
+#addReview #submit{
     display: block;
     min-width: 15%;
     height: auto;
@@ -341,12 +341,12 @@ body header div .option:hover{
     cursor: pointer;
 }
 
-#addReview input[type=submit]:hover{
+#addReview #submit:hover{
     border: solid 0.3vh #e5d389;
     border-radius: 3vh;
 } 
 
-#addReview input[type=submit]:focus{
+#addReview #submit:focus{
     border-radius: 5vh;
     background-color: #e5d389;
 }
