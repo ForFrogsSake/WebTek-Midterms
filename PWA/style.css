@@ -416,6 +416,19 @@ footer{
     border: solid 0.3vh #303030;
 }
 
+#logout{
+    background: none;
+    border: none;
+    font-family: basic;
+    font-weight: bolder;
+    font-size: 2.1vh;
+    color: inherit;
+    box-sizing:border-box;
+    margin: 0vh;
+    padding: 0vh;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1024px){
     body{
         display: block;
