@@ -18,7 +18,7 @@ function openDB(){
         objectStore.createIndex("email", "email", {unique:true});
 
 
-        var objectStore = db.createObjectStore("reviews", {keyPath: "username"});
+        var objectStore = db.createObjectStore("reviews", {autoIncrement : true});
         objectStore.createIndex("restaurant", "restaurant", {unique: false});
         objectStore.createIndex("rating", "rating", {unique:false});
         objectStore.createIndex("comment", "comment", {unique:false});
@@ -218,10 +218,6 @@ function setupHome(){
     displayRestaurant();
     showSignedInUser();
 
-    document.getElementById("searchBox").addEventListener("input", function(){
-       search();
-    });
-
     document.getElementById("1").addEventListener("click", function(){
         document.getElementById("rate").innerHTML = "";
     });
@@ -232,7 +228,6 @@ function setupHome(){
 }
 
 function addReview(){
-    openRestaurantReviews();
     console.log('yo');
 
     var username = JSON.parse(sessionStorage.getItem('user')).username;
@@ -242,6 +237,10 @@ function addReview(){
 
     var validRating = validRate();
     var validComment = review();
+
+    if (restaurant.toLowerCase() == "Restaurant Name".toLowerCase()) {
+        alert('Please choose a restaurant')
+    }
 
     if(!validRating || !validComment){
         return;
@@ -271,6 +270,9 @@ function addReview(){
         console.log(e);
         console.log('added a new review' + " " + newReview.username);
     }
+
+    computeAvg(restaurant);
+    displayReviews(restName);
 }
 
 function showSignedInUser(){
@@ -304,29 +306,39 @@ function validRate(){
 }
 
 function computeAvg(restaurant){
-    var getRating = document.forms['inputForm']['rating'].value;
-    var request = objectStore.getAll(restaurant);
+    console.log('cool');
 
-    var rateArray = [getRating];
     var sum = 0;
+    var count = 0;
+    var avg;
 
-    for(var i = 0; i < rateArray.length; i++){
-        sum += parseInt(rateArray[i]);
+    var transaction = db.transaction(['reviews']);
+    var objectStore = transaction.objectStore("reviews");
+    var request = objectStore.getAll();
+
+    request.onsuccess = function(e){
+        console.log('yay');
+
+       for(var i  = 0; i <request.result.length; i++){
+            if (request.result[i].restaurant.toLowerCase() == restaurant.toLowerCase()){
+                sum += parseInt(request.result[i].rating);
+                count ++;
+            }
+       }
+       avg = sum/count;
+       console.log(avg);
+
+        if (isNaN(avg)){
+            avg = 0;
+        }
+        document.getElementById('average').innerHTML = "<h2>" + avg.toFixed(2) + "</h2>";
     }
-
-    var avg = sum/rateArray.length;
-
-    document.getElementById('average').innerHTML;
 }
 
 //runs when index.html loads
 function setupIndex(){
     openDB();
     displayRestaurant();
-
-    document.getElementById("searchBox").addEventListener("input", function(){
-       search();
-    });
 }
 
 function displayRestaurant(){
@@ -342,7 +354,7 @@ function displayRestaurant(){
                     </a>
             </button>
         `
-    });
+    })
 }
 
 function openRestaurantReviews(element){
@@ -359,7 +371,54 @@ function openRestaurantReviews(element){
 
     document.getElementById("restName").innerText = restName;
     document.getElementById("restAddress").innerText = restAddress;
+
+    computeAvg(restName);  
+    displayReviews(restName);
 }
+
+
+function displayReviews(restName){
+
+    document.getElementById('content').innerHTML ="";
+    console.log('display reviews');
+
+    var restReviews = [];
+    var transaction = db.transaction(['reviews']);
+    var objectStore = transaction.objectStore("reviews");
+    var request = objectStore.getAll();
+
+    request.onerror = function(e){
+        console.log('error');
+    }
+
+    request.onsucces = function(e){
+        console.log('wee');
+
+        request.result.forEach(function(e){
+            if(e.restaurant == restaurant){
+                console.log(e)
+                restReviews.push(e);
+            }
+        });
+
+        var numOfReviews = 0;
+        var reviewNo = restReviews.length;
+        while(numOfReviews < 4 && reviewNo > 0){
+            document.getElementById('content').innerHTML +=
+            `
+                <div class="contentCard">
+                        <h3>${restReviews[reviewNo-1].username}</h3>
+                        <h4>${restReviews[reviewNo-1].rating}</h4>
+                        <p>${restReviews[reviewNo-1].comment}</p>
+                 </div>
+            `
+            numOfReviews++;
+            reviewNo--;
+        }
+    }     
+}
+
+
 
 
 
