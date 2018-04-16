@@ -214,6 +214,7 @@ function logout(){
 
 function setupHome(){
     openDB();
+    displayRestaurant();
 
     document.getElementById("searchBox").addEventListener("input", function(){
        search();
@@ -293,115 +294,59 @@ function rating(){
     }else {
         console.log('bad');
     }
+
+    var computeAverage = [rating];
+
+    var sum = 0;
+    for(var i = 0; i < computeAverage.length; i++){
+        sum += parseInt(computeAverage[i]);
+    }
+
+    return avg = sum/computeAverage.length;
+
+    document.getElementById('average').innerText = avg;
 }
 
 //runs when index.html loads
 function setupIndex(){
     openDB();
+    displayRestaurant();
 
     document.getElementById("searchBox").addEventListener("input", function(){
        search();
     });
 }
 
-var restaurant = [];
-function search(){
-    document.getElementsByClassName("resultContainer")[0].innerHTML = " ";
-    console.log("change");
-    restaurant.length = 0;
-    var searchKey = document.getElementById("searchBox").value.toLowerCase();
-    for(var i = 0; i < list.length; i++){
-        if( list[i].Name.toLowerCase().includes( searchKey ) || list[i].Address.toLowerCase().includes( searchKey ) || list[i].Desc.toLowerCase().includes( searchKey )){
-            if(restaurant.indexOf(list[i]) === -1){
-                restaurant.push(list[i]);
-            }
-        }
-    }
-
-    if(restaurant.length > 0){
-        restaurant.forEach(function(e){
-            document.getElementsByClassName("resultContainer")[0].innerHTML += `
-    <button class="result" onclick="openRestaurantReviews()">
-        <a class="resultName" id="resultName">
-            ${e.Name}
-        </a>
-        <a class="resultLocation">
-            ${e.Address}
-        </a>
-    </button>
-`           
-        })
-    }else if(restaurant.length == 0 && document.getElementById("searchBox").value != ""){
-        document.getElementsByClassName("resultContainer")[0].innerHTML = 
-`
-    <button class="result">
-        <a class="resultName">
-            No results!
-        </a>
-    </button>
-`
-    }else{
-        document.getElementsByClassName("resultContainer")[0].innerHTML = 
-`
-    <button class="result">
-        <a class="resultName">
-            Search Above!
-        </a>
-    </button>
-`
-    }
+function displayRestaurant(){
+    list.forEach(function(restaurant){
+        document.getElementsByClassName('resultContainer')[0].innerHTML +=
+        `
+            <button data-restaurant="${restaurant.Name}" class="result" onclick="openRestaurantReviews(this)">
+                    <a class="resultName">
+                        ${restaurant.Name}
+                    </a>
+                    <a class="resultName">
+                        ${restaurant.Location}
+                    </a>
+            </button>
+        `
+    });
 }
 
-
-function openRestaurantReviews(){
-    document.getElementById("content").innerHTML = ""
-    var restObject;
+function openRestaurantReviews(element){
+    var restName = element.dataset.restaurant;
+    var restAddress; 
+    console.log(element.dataset.restaurant);
 
     for(var i = 0; i < list.length; i++){
-        if( document.getElementById("resultName").innerText == restaurant[i].Name ){
-            restObject = restaurant[i];
+        if(restName == list[i].Name){
+            restAddress = list[i].Location;
             break;
         }
     }
 
-    document.getElementById("reviews").style.display = "block";
-    document.getElementsByClassName("resultContainer")[0].innerHTML = 
-`
-    <button class="result">
-        <a class="resultName">
-            Search Above!
-        </a>
-    </button>
-`;
-
-    document.getElementById("restName").innerText = restObject.Name;
-    document.getElementById("restAddress").innerText = restObject.Address;
-
-
-    // var transaction = db.transaction(["reviews"]);
-    // var objectStore = transaction.objectStore("reviews");
-
-    // var request = objectStore.get(restObject.Name);
-
-    // request.onsuccess = function(e){ //e = laman ng request 
-    //  if(request.result == undefined){ 
-    //      document.getElementById("average").innerHTML = `<h2>0.0</h2>`
-    //  }else{
-    //      document.getElementById("average").innerHTML = `<h2>${request.result.rating}</h2>`
-
-    //      request.result.forEach(function(e){
-    //          document.getElementById("content").innerHTML += `
-    // <div class="contentCard">
-    //     <h3>${e.username}</h3>
-    //     <h4>${e.rating}</h4>
-    //     <p id="">${e.comment}</p>
-    // </div>
-    //      `
-    //      })
-    //  }
-        
-    // };
-    
+    document.getElementById("restName").innerText = restName;
+    document.getElementById("restAddress").innerText = restAddress;
 }
 
 
