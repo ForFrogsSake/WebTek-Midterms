@@ -38,13 +38,13 @@
             <div id="average">
                 <h2></h2>
             </div>
-            <form id="addReview" name="addReviewForm">
+            <form id="addReview" name="inputForm">
                 <h3 id="loggedInUser">User Name</h3>
                 <p>Rating:</p><input type="number" name="rating" onfocus="this.value=''" value="" id="1"> <p id="rate"></p>
                 <p>Comments:</p>
-                <textarea name="comment" rows="5" cols="10">
-                </textarea onfocus="this.value=''" value="" id="2"> <p id="wow"></p>
-                <input id="submit" type="submit" value="+" onclick="addReview()">
+                <textarea name="comment" rows="5" cols="10" onfocus="this.value=''" value="" id="2">
+                </textarea> <p id="wow"></p>
+                <input id="submit" type="button" value="+" onclick="addReview()">
             </form>
             <h2 id="reviewTitle">Reviews</h2>
             <div id="content">

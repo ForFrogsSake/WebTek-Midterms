@@ -19,6 +19,7 @@ function openDB(){
 
 
         var objectStore = db.createObjectStore("reviews", {keyPath: "username"});
+        objectStore.createIndex("restaurant", "restaurant", {unique: false});
         objectStore.createIndex("rating", "rating", {unique:false});
         objectStore.createIndex("comment", "comment", {unique:false});
 
@@ -215,6 +216,7 @@ function logout(){
 function setupHome(){
     openDB();
     displayRestaurant();
+    showSignedInUser();
 
     document.getElementById("searchBox").addEventListener("input", function(){
        search();
@@ -230,16 +232,18 @@ function setupHome(){
 }
 
 function addReview(){
+    openRestaurantReviews();
     console.log('yo');
 
     var username = JSON.parse(sessionStorage.getItem('user')).username;
-    var rating = document.forms['addReviewForm']['rating'].value; 
-    var comment = document.forms['addReviewForm']['comment'].value;
+    var rating = document.forms['inputForm']['rating'].value; 
+    var comment = document.forms['inputForm']['comment'].value;
+    var restaurant = document.getElementById('restName').innerText;
 
-    var validRating = rating();
+    var validRating = validRate();
     var validComment = review();
 
-    if(!validRating == "" || !validComment == ""){
+    if(!validRating || !validComment){
         return;
     }
 
@@ -250,14 +254,14 @@ function addReview(){
     }
 
     transaction.onerror = function(e){
-        console.log('error')
-        disableReview();
-;   }
+        console.log('error');
+    }
 
     var newReview = {
         "username": username,
         "rating": rating,
-        "comment":  comment
+        "comment":  comment,
+        "restaurant" : restaurant
     }
 
     var objectStore = transaction.objectStore("reviews");
@@ -265,46 +269,54 @@ function addReview(){
 
     request.onsuccess = function(e){
         console.log(e);
-        console.log('added a new review' + " " + newReview.rating);
+        console.log('added a new review' + " " + newReview.username);
     }
+}
+
+function showSignedInUser(){
+    console.log('yoyoyo');
+    document.getElementById("loggedInUser").innerHTML = JSON.parse(sessionStorage.getItem("user")).username;
 }
 
 function review(){
-    var review = document.forms['addReviewForm']['comment'].value;
+    var review = document.forms['inputForm']['comment'].value;
+
 
     if(review == ""){
         document.getElementById("wow").innerHTML = "Please put a comment here";
-        return;
+        return false;
+    }
+    return true;
+}
+
+function validRate(){
+    var rating = document.forms['inputForm']['rating'].value;
+
+    if (rating == "" || rating > 5){
+        document.getElementById("rate").innerHTML = "Please rate from 1 to 5";
+        return false;
+    } 
+
+    if (rating <= 5){
+        console.log('good rate');
+        return true;
     }
 }
 
-function rating(){
-    var rating = document.forms['addReview']['rating'].value;
+function computeAvg(restaurant){
+    var getRating = document.forms['inputForm']['rating'].value;
+    var request = objectStore.getAll(restaurant);
 
-    if (rating == "" || rating > 5 ){
-        document.getElementById("rate").innerHTML = "Please have a rate";
-        return;
-    }
-    return valid;  
-
-    if(rating == 5){
-        console.log('good pass');
-    }else if(rating < 5) {
-        console.log('strong');
-    }else {
-        console.log('bad');
-    }
-
-    var computeAverage = [rating];
-
+    var rateArray = [getRating];
     var sum = 0;
-    for(var i = 0; i < computeAverage.length; i++){
-        sum += parseInt(computeAverage[i]);
+
+    for(var i = 0; i < rateArray.length; i++){
+        sum += parseInt(rateArray[i]);
     }
 
-    return avg = sum/computeAverage.length;
+    var avg = sum/rateArray.length;
 
-    document.getElementById('average').innerText = avg;
+    document.getElementById('average').innerHTML;
 }
 
 //runs when index.html loads
