@@ -1,5 +1,5 @@
 
-
+openDB();
 function openDB(){
     var request = indexedDB.open("BaguioEatsDB", 1);
     request.onerror = function(e){
@@ -214,9 +214,9 @@ function logout(){
 }
 
 function setupHome(){
-    openDB();
     displayRestaurant();
     showSignedInUser();
+    displayReviewsAll();
 
     document.getElementById("1").addEventListener("click", function(){
         document.getElementById("rate").innerHTML = "";
@@ -239,7 +239,8 @@ function addReview(){
     var validComment = review();
 
     if (restaurant.toLowerCase() == "Restaurant Name".toLowerCase()) {
-        alert('Please choose a restaurant')
+        alert('Please choose a restaurant');
+        return;
     }
 
     if(!validRating || !validComment){
@@ -273,6 +274,8 @@ function addReview(){
 
     computeAvg(restaurant);
     displayReviews(restName);
+
+    window.location.reload();
 }
 
 function showSignedInUser(){
@@ -339,6 +342,10 @@ function computeAvg(restaurant){
 function setupIndex(){
     openDB();
     displayRestaurant();
+
+    if(sessionStorage.getItem("user") != null){
+        window.location = "html/home.html";
+    }
 }
 
 function displayRestaurant(){
@@ -378,7 +385,6 @@ function openRestaurantReviews(element){
 
 
 function displayReviews(restName){
-
     document.getElementById('content').innerHTML ="";
     console.log('display reviews');
 
@@ -391,11 +397,11 @@ function displayReviews(restName){
         console.log('error');
     }
 
-    request.onsucces = function(e){
+    request.onsuccess = function(e){
         console.log('wee');
 
         request.result.forEach(function(e){
-            if(e.restaurant == restaurant){
+            if(e.restaurant == restName){
                 console.log(e)
                 restReviews.push(e);
             }
@@ -418,39 +424,74 @@ function displayReviews(restName){
     }     
 }
 
+function displayReviewsAll(){
 
+    document.getElementById('content').innerHTML ="";
+    console.log('display all reviews');
 
+    var transaction = db.transaction(['reviews']);
+    var objectStore = transaction.objectStore("reviews");
+    var request = objectStore.getAll();
 
+    request.onerror = function(e){
+        console.log('error');
+    }
 
-/*ss
+    request.onsuccess = function(e){
+        console.log('wee');
+
+        var numOfReviews = 0;
+        var reviewNo = request.result.length;
+        while(numOfReviews < 4 && reviewNo > 0){
+            document.getElementById('content').innerHTML +=
+            `
+                <div class="contentCard">
+                        <h3>${request.result[reviewNo-1].username}</h3>
+                        <h3>${request.result[reviewNo-1].restaurant}</h3>
+                        <h4>${request.result[reviewNo-1].rating}</h4>
+                        <p>${request.result[reviewNo-1].comment}</p>
+                 </div>
+            `
+            numOfReviews++;
+            reviewNo--;
+        }
+    }     
+}
+
 
 //service worker
 
+var v1 = 'baguio-eats-cache';
+
 self.addEventListener('install', function(e){
-    var wee = 'BaguioEats';
-    var urlsToCache = [
-        'style.css',
-        'script.js',
-        'css/sign.css',
-        'html/about.html',
-        'html/signin.html',
-        'html/signup.html',
-        'images/Baguio-Eats.png',
-        'images/Baguio-Eats-Logo.png',
-        'images/Kitchenware-Background.png',
-        'images/search.png'
-    ];
-
-    event.waitUntil(
-        caches.open(wee)
-        .then(function(cache){
-            console.log('Opened cache')
-            return cache.addAll(urlsToCache);
-        })
+   e.waitUntil(
+    caches.open(v1).then(function(cache){
+        return cache.addAll(
+        [
+            'css/sign.css',
+            'fonts/activ.ttf',
+            'fonts/basic.ttf',
+            'fonts/bebas.ttf',
+            'fonts/lemon.otf',
+            'fonts/lemonlight.otf',
+            'fonts/orator.otf',
+            'html/about.html',
+            'html/signin.html',
+            'html/signup.html',
+            'html/home.html',
+            'images/Baguio-Eats.png',
+            'images/Baguio-Eats-Logo.png',
+            'images/Kitchenware-Background.png',
+            'images/search.png',
+            'index.html',
+            'list.json',
+            'script.js',
+            'style.css']);
+    })
     );
-})
+});
 
-self.addEventListener('fetch', function(e){
+self.addEventListener('fetch', function(event){
     event.respondWith(
         caches.match(event.request)
         .then(function(response){
@@ -462,8 +503,8 @@ self.addEventListener('fetch', function(e){
 
             return fetch(event.request).then(
             function(response) {
-                if(!response || response.status !== 200 || response.type! == 'basic'){
-                    resturn response;
+                if(!response || response.status != 200 || response.type != 'basic'){
+                    return response;
                 }
 
                 var responseToCache = response.clone();
@@ -492,5 +533,3 @@ self.addEventListener('active', function(event){
                 }))
         }))
 })
-
-*/

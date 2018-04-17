@@ -324,7 +324,7 @@ body header div .option:hover{
     border: solid 0.3vh #d8b212;
 }
 
-#addReview input[type=submit]{
+#addReview input[type=button]{
     display: block;
     min-width: 15%;
     height: auto;
@@ -341,12 +341,12 @@ body header div .option:hover{
     cursor: pointer;
 }
 
-#addReview input[type=submit]:hover{
+#addReview input[type=button]:hover{
     border: solid 0.3vh #e5d389;
     border-radius: 3vh;
 } 
 
-#addReview input[type=submit]:focus{
+#addReview input[type=button]:focus{
     border-radius: 5vh;
     background-color: #e5d389;
 }
